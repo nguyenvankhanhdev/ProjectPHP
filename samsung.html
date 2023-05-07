@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/samsung.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="./assets/font.css">
+    <link rel="stylesheet" href="./assets/icon-fptshop.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <header>
+        <div class="header ">
+            <div class="logo ">
+                <div class="container">
+                    <div class="flex logo-inner">
+                        <div class="logo-item flex-align-center">
+                            <a href="./index.html"><img class="mr-4" src="./assets/img/logo-mb.png" alt=""></a>
+                        </div>
+                        <div class="g-search">
+                            <form action="">
+                                <div class="input-box">
+                                    <input type="text"
+                                        placeholder="Nhập tên điện thoại, máy tính, phụ kiện.... cần tìm">
+                                    <button type="submit" class="input-box-search">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- <div class="g-search">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success " type="submit">Search</button>
+                            </form>
+                        </div> -->
+                        <div class="home-page">
+                            <div class="home-page-inner">
+                                <div class="home-page-item">
+                                    <a href="./index.html" target="_blank"><i class="bi bi-house-door-fill"></i>
+                                        Trang
+                                        chủ</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="market">
+                            <a href="/cart.html" target="_blank"><i class="bi bi-cart"></i></a>
+                        </div>
+                        <div class="register">
+                            <div class="register-inner">
+                                <div class="register-login">
+                                    <a href="./log-in.html" target="_blank"> Đăng kí / Đăng nhập</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ul class="nav">
+                    <li class="menu">
+                        <a class="item-product" href=""> <i class="bi bi-phone"></i> Điện thoại</a>
+                        <div class="subnav">
+                            <div class="nav-item"><a href="#">SamSung</a></div>
+                            <div class="nav-item"><a href="#">Xiaomi</a></div>
+                            <div class="nav-item"><a href="#">Apple(Iphone)</a></div>
+                            <div class="nav-item"><a href="#">Asus</a></div>
+                            <div class="nav-item"><a href="#">Nokia</a></div>
+                        </div>
+                    </li>
+                    <li class="menu"><a class="item-product" href="https://fptshop.com.vn" target="_blank"> <i
+                                class="bi bi-laptop"></i> Laptop</a>
+                        <div class="subnav">
+                            <div class="nav-item"><a href="#">MacBook</a></div>
+                            <div class="nav-item"><a href="#">MSI</a></div>
+                            <div class="nav-item"><a href="#">Acer</a></div>
+                            <div class="nav-item"><a href="#">Asus</a></div>
+                            <div class="nav-item"><a href="#">Dell</a></div>
+                        </div>
+                    </li>
+                    <li class="menu"><a class="item-product" href=""><i class="bi bi-tablet"></i> Máy tính bảng</a>
+                        <div class="subnav">
+                            <div class="nav-item"><a href="#">MacBook</a></div>
+                            <div class="nav-item"><a href="#">MSI</a></div>
+                            <div class="nav-item"><a href="#">Acer</a></div>
+                            <div class="nav-item"><a href="#">Asus</a></div>
+                            <div class="nav-item"><a href="#">Dell</a></div>
+                        </div>
+                    </li>
+                    <li class="menu"><a class="item-product" href=""><i class="bi bi-apple"></i> Apple</a>
+                        <div class="subnav">
+                            <div class="nav-item"><a href="#">MacBook</a></div>
+                            <div class="nav-item"><a href="#">MSI</a></div>
+                            <div class="nav-item"><a href="#">Acer</a></div>
+                            <div class="nav-item"><a href="#">Asus</a></div>
+                            <div class="nav-item"><a href="#">Dell</a></div>
+                        </div>
+                    </li>
+                    <li class="menu"><a class="item-product" href=""><i class="bi bi-headset"></i>Phụ Kiện</a>
+                        <div class="subnav">
+                            <div class="nav-item"><a href="#">MacBook</a></div>
+                            <div class="nav-item"><a href="#">MSI</a></div>
+                            <div class="nav-item"><a href="#">Acer</a></div>
+                            <div class="nav-item"><a href="#">Asus</a></div>
+                            <div class="nav-item"><a href="#">Dell</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class=" row">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="./index.html" target="_blank">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="">SamSung</a></li>
+                    </ol>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+                    style="margin-bottom: 24px;">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner "
+                        style=" box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);">
+                        <div class="carousel-item active">
+                            <video autoplay muted height="100%" controls="controls" src="./assets/img/samsung.mp4"
+                                class="d-block w-100"></video>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/img/slider-1.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/img/slider-2.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/img/slider-3.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/img/slider-4.png" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="section-tabs">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chapter-tabs">
+                                <div class="chapter-title">Sản Phẩm SamSung </div>
+                                <div class="chapter-list">
+                                    <div class="chapter active">
+                                        <a class="chapter-img" href="">
+                                            <i class="icon-Combined-Shape"></i>
+                                        </a>
+                                        <div class="chapter-lable push">Sản phẩm nổi bật</div>
+                                    </div>
+                                    <div class="chapter">
+                                        <a class="chapter-img" href=""><i class="ic-phone-fold"></i></a>
+                                        <div class="chapter-label">Điện thoại</div>
+
+                                    </div>
+                                    <div class="chapter">
+                                        <a class="chapter-img" href=""><i class="ic-tablet-2"></i></a>
+                                        <div class="chapter-label">Máy tính bảng</div>
+
+                                    </div>
+                                    <div class="chapter">
+                                        <a class="chapter-img" href=""><i class="ic-galaxy-watch"></i></a>
+                                        <div class="chapter-label">Đồng hồ thông minh</div>
+
+                                    </div>
+                                    <div class="chapter">
+                                        <a class="chapter-img" href="">
+                                            <i class="ic-galaxy-buds"></i>
+                                        </a>
+                                        <div class="chapter-label">Tai nghe</div>
+
+                                    </div>
+                                    <div class="chapter">
+                                        <a class="chapter-img" href=""><i class="ic-apple-cable"></i></a>
+                                        <div class="chapter-label">Phụ kiện chính hãng</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="section-hot">
+                    <div class="section-title">Khuyến Mãi Hot</div>
+                    <div class="hot-promotion-inner">
+                        <div class="promotion-main">
+                            <a href="">
+                                <img src="./assets/img/638110459464426127_Frame 47642.png" alt="">
+                                <div class="promotion-text">
+                                    <div class="hot-promotion-title"> Mua ngay Galaxy S23 Series nhận đặc quyền đến 10
+                                        triệu ++ </div>
+                                    <div class="hot-promotion-content">
+                                        <p>Quà độc quyền bảo hành 2 năm + trả góp 0% đến 24 tháng</p>
+                                    </div>
+                                    <div class="buy-now">Mua Ngay</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="promotion-mini">
+                            <div class="promotion-mini-item mb-4 ">
+                                <a href="">
+                                    <img src="./assets/img/638110453361436795_s22.png" alt="">
+                                    <div class="mini-promotion-text">
+                                        <div class="mini-product-title">
+                                            Độc quyền Galaxy S22 tím Bora giảm ngay 6.5 triệu</div>
+                                        <div class="mini-product-content">
+                                            <p>Giá chỉ 12.490.000đ + Buds2 xám giá chỉ 990.000đ</p>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now">Mua Ngay</div>
+                                </a>
+                            </div>
+                            <div class="promotion-mini-item mb-4 ">
+                                <a href="">
+                                    <img src="./assets/img/638110649652773958_bespoke1.png" alt="">
+                                    <div class="mini-promotion-text">
+                                        <div class="mini-product-title">
+                                            Galaxy Z Flip4 Bespoke giá từ 18.990.000đ</div>
+                                        <div class="mini-product-content">
+                                            <p>Giảm ngay 8 triệu khi thu cũ đổi mới <br>Miễn phí 2 năm Samsung </p>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now">Mua Ngay</div>
+                                </a>
+                            </div>
+                            <div class="promotion-mini-item ">
+                                <a href="">
+                                    <img src="./assets/img/638110453361280471_watch5.png" alt="">
+                                    <div class="mini-promotion-text">
+                                        <div class="mini-product-title">
+                                            Galaxy Watch Series</div>
+                                        <div class="mini-product-content">
+                                            <p>Giảm đến 3 triệu + trả góp</p>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now">Mua Ngay</div>
+                                </a>
+                            </div>
+                            <div class="promotion-mini-item">
+                                <a href="">
+                                    <img src="./assets/img/638110453361436795_s22.png" alt="">
+                                    <div class="mini-promotion-text">
+                                        <div class="mini-product-title">
+                                            Galaxy Tab S6 Lite 2022</div>
+                                        <div class="mini-product-content">
+                                            <p>Giảm ngay 3.000.00đ + Mua kèm buds2 xám giá chỉ 990.000đ</p>
+                                        </div>
+                                    </div>
+                                    <div class="buy-now">Mua Ngay</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="slider">
+                <div class="container">
+                    <div class="cart">
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638170656722725117_samsung-galaxy-z-fold4-do-dd-1.webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 7.230.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy Z Fold4 5G 256GB</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#2D2926"></div>
+                                    <div class="circle-item pink" style="background:#4F5A61"></div>
+                                    <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                    <div class="circle-item pink" style="background:#74424F"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">33.760.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>40.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        256GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        512GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638167465484591506_samsung-galaxy-z-flip4-xanh-dd.webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 8.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy Z Flip4 5G 256GB Bespoke Edition</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#364151"></div>
+                                    <div class="circle-item pink" style="background:#C55F56"></div>
+                                    <div class="circle-item pink" style="background:#C55F56"></div>
+
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">17.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>25.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        256GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        512GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638158962810512367_ss-galaxy-s22-dd-icon.webp" alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 9.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy S22 5G 128GB</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#E1D2CF"></div>
+                                    <div class="circle-item pink" style="background:#030003"></div>
+                                    <div class="circle-item pink" style="background:#ffffff"></div>
+                                    <div class="circle-item pink" style="background:#BDB3D2"></div>
+                                    <div class="circle-item pink" style="background:#0092D4"></div>
+
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">12.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>21.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        128GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        256GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/637994560710957944_samsung-galaxy-tab-s6-lite-2022--dd-docquyen.webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 3.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy Tab S6 Lite 2022</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#5F7F8E"></div>
+                                    <div class="circle-item pink" style="background:#66696E"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">6.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>9.990.000đ</strike>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img//638109356938776451_samsung-galaxy-s23-ultra-xanh-dd-bh (1).webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 13.500.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy S22 Ultra 5G 128GB</a>
+                                </h3>
+                                <div class="circle-color" style="margin-bottom:12px; margin-top:8px">
+                                    <div class="circle-item pink" style="background:#BDB3D2"></div>
+                                    <div class="circle-item pink" style="background:#030003"></div>
+                                    <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                    <div class="circle-item pink" style="background:#3f504e"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">17.490.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>30.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        128GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        256GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638109400948327364_samsung-galaxy-s23-plus-dd-tim-bh.webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 5.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy S23 Plus 5G</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#3f504e"></div>
+                                    <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                    <div class="circle-item pink" style="background:#030003"></div>
+                                    <div class="circle-item pink" style="background:#BDB3D2"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">26.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>21.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        256GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        512GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638109400939907860_samsung-galaxy-s23-dd-vang-bh.webp"
+                                        alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 3.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy S23 5G 256GB</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#BDB3D2"></div>
+                                    <div class="circle-item pink" style="background:#030003"></div>
+                                    <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                    <div class="circle-item pink" style="background:#3f504e"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">21.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>24.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        256GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        512GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-product-img">
+                                <a href="./details.html" target="_blank"> <img class="cart-img"
+                                        src="./assets/img/638107846050335072_iphone-13-dd-1.webp" alt=""></a>
+                                <div class="cart-product-label">
+                                    <div class="badge-warning">Trả góp 0%</div>
+                                    <div class="badge-primary">Giảm 2.000.000đ</div>
+                                </div>
+                            </div>
+                            <div class="cart-product">
+                                <h3>
+                                    <a href="">Samsung Galaxy Z Fold4 5G 256GB</a>
+                                </h3>
+                                <div class="circle-color">
+                                    <div class="circle-item pink" style="background:#2D2926"></div>
+                                    <div class="circle-item pink" style="background:#4F5A61"></div>
+                                    <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                    <div class="circle-item pink" style="background:#74424F"></div>
+                                </div>
+                                <div class="cart-price">
+                                    <div class="price-sale">17.990.000đ </div>
+                                    <div class="price-strike">
+                                        <strike>19.990.000đ</strike>
+                                    </div>
+                                </div>
+                                <div class="cart-memory">
+                                    <button class="cart-memory-item-active">
+                                        256GB
+                                    </button>
+                                    <button class="cart-memory-item">
+                                        512GB
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="cart-btn">
+                                <div class="btn-buynow">
+                                    <a href="">Mua ngay</a>
+                                </div>
+                                <div class="btn-compare">
+                                    <a href="">So sánh</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="pocity">
+                    <div class="pocity-row">
+                        <div class="pocity-item">
+                            <div class="pocity-inner">
+                                <div class="pocity-picture">
+                                    <img src="./assets/img/graphic.png" alt="">
+                                </div>
+                                <div class="pocity-inf">
+                                    <div class="pocity-title">Thương hiệu hàng đầu</div>
+                                    <div class="pocity-mess">Bảo hành chính hãng</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pocity-item">
+                            <div class="pocity-inner">
+                                <div class="pocity-picture">
+                                    <img src="./assets/img/change.png" alt="">
+                                </div>
+                                <div class="pocity-inf">
+                                    <div class="pocity-title">Đổi trả dễ dàng</div>
+                                    <div class="pocity-mess">Theo chính sách đổi trả FPTShop</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pocity-item">
+                            <div class="pocity-inner">
+                                <div class="pocity-picture">
+                                    <img src="./assets/img/delivery.png" alt="">
+                                </div>
+                                <div class="pocity-inf">
+                                    <div class="pocity-title">Giao hàng tận nơi</div>
+                                    <div class="pocity-mess">Tại 63 tỉnh thành</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pocity-item">
+                            <div class="pocity-inner">
+                                <div class="pocity-picture">
+                                    <img src="./assets/img/like.png" alt="">
+                                </div>
+                                <div class="pocity-inf">
+                                    <div class="pocity-title">Sản phẩm chất lượng</div>
+                                    <div class="pocity-mess">Đảm bảo tương thích và độ bền cao</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <ul>
+                            <li><a href="">Giới thiệu về công ty</a></li>
+                            <li><a href="">Chính sách bảo mật</a></li>
+                            <li><a href="">Quy chế hoạt động</a></li>
+                            <li><a href="">Kiểm tra hóa đơn điện tử</a></li>
+                            <li><a href="">Tra cứu thông tin bảo hành</a></li>
+                            <li><a href="">Câu hỏi thường gặp khi mua hàng</a></li>
+                        </ul>
+                        <div class="contact-icon">
+                            <div class="icon-item">
+                                <img class="cth1" src="./assets/img/ft-img1.png" alt="">
+                            </div>
+                            <div class="icon-item">
+                                <img class="cth2" src="./assets/img/ft-img2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <ul>
+                            <li><a href="">Tin tuyển dụng</a></li>
+                            <li><a href="">Tin khuyến mãi</a></li>
+                            <li><a href="">Hướng dẫn mua online</a></li>
+                            <li><a href="">Hướng dẫn mua trả góp</a></li>
+                            <li><a href="">Chính sách trả góp</a></li>
+                        </ul>
+                        <p class="trtit">Chứng nhận:</p>
+                        <div class="contact-icon">
+                            <div class="icon-item">
+                                <img class="cth3" src="./assets/img/ft-img3.png" alt="">
+                            </div>
+                            <div class="icon-item">
+                                <img class="cth3" src="./assets/img/ft-img4.png" alt="">
+                            </div>
+                            <div class="icon-item">
+                                <img class="cth3" src="./assets/img/ft-img5.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <ul>
+                            <li><a href="">Hệ thống cửa hàng</a></li>
+                            <li><a href="">Chính sách đổi trả</a></li>
+                            <li><a href="">Hệ thống bảo hành</a></li>
+                            <li><a href="">Giới thiệu máy đổi trả</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact-item contact-custom">
+                        <ul class="ftr2">
+                            <li>
+                                <p class="trtit">Tư vấn mua hàng miễn phí</p>
+                                <a href="">1800 6601 <span>(Nhánh 1)</span></a>
+
+                            </li>
+                            <li>
+                                <p class="trtit">Hỗ trợ kỹ thuật</p>
+                                <a href="">1800 6601
+                                    <span>(Nhánh 2)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <p class="trtit">Góp ý, khiếu nại(8h - 22h00)</p>
+                                <a href="">1800 6616</a>
+                            </li>
+                        </ul>
+                        <p class="contact-title">Hỗ trợ thanh toán</p>
+                        <div class="support-pay">
+                            <div class="pay-item"><img src="./assets/img/visa.png" alt=""></div>
+                            <div class="pay-item"><img src="./assets/img/atm.png" alt=""></div>
+                            <div class="pay-item"><img src="./assets/img/zalo-pay.png" alt=""></div>
+                            <div class="pay-item"><img src="./assets/img/master-card.png" alt=""></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

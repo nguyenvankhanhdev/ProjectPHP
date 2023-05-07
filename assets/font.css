@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'ss-700';
+    src: url('../assets/fonts/samsung/SamsungOne-700.eot');
+    src: url('../assets/fonts/samsung/SamsungOne-700.eot?#iefix') format('embedded-opentype'), 
+    url('../assets/fonts/samsung/SamsungOne-700.woff2') format('woff2'),
+     url('../assets/fonts/samsung/SamsungOne-700.woff') format('woff'),
+      url('../assets/fonts/samsung/SamsungOne-700.ttf') format('truetype'),
+       url('../assets/fonts/samsung/SamsungOne-700.svg#../assets/fonts/samsung/SamsungOne-700') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ss-800';
+    src: url('../assets/fonts/samsung/SamsungOne-800.eot');
+    src: url('../assets/fonts/samsung/SamsungOne-800.eot?#iefix') format('embedded-opentype'), 
+    url('../assets/fonts/samsung/SamsungOne-800.woff2') format('woff2'),
+     url('../assets/fonts/samsung/SamsungOne-800.woff') format('woff'), 
+     url('../assets/fonts/samsung/SamsungOne-800.ttf') format('truetype'), 
+     url('../assets/fonts/samsung/SamsungOne-800.svg#../assets/fonts/samsung/SamsungOne-800') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ss-300';
+    src: url('../assets/fonts/samsung/SamsungOne-300.eot');
+    src: url('../assets/fonts/samsung/SamsungOne-300.eot?#iefix') format('embedded-opentype'), 
+    url('../assets/fonts/samsung/SamsungOne-300.woff2') format('woff2'),
+     url('../assets/fonts/samsung/SamsungOne-300.woff') format('woff'),
+      url('../assets/fonts/samsung/SamsungOne-300.ttf') format('truetype'),
+       url('../assets/fonts/samsung/SamsungOne-300.svg#../assets/fonts/samsung/SamsungOne-300') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
