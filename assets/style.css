@@ -266,11 +266,6 @@ header {
     text-decoration: none;
 }
 
-.nav .subnav>li>a {
-    /* font-size: 10px;
-    width: 100%;
-    height: 100%; */
-}
 
 .nav .nav-item:hover,
 .nav>li:hover {
@@ -552,7 +547,7 @@ header {
 }
 
 .prd-sale .tittle {
-    font-size: 22px;
+    font-size: 24px;
     text-transform: uppercase;
 
     color: #cd1817;
@@ -560,6 +555,8 @@ header {
 
 .prd-sale .tittle h2 {
     font-weight: 700;
+    text-align: center;
+
 }
 
 .swiper-container {
@@ -582,6 +579,10 @@ header {
 }
 
 .swiper-slide {
+    width: calc(100% / 3 - 7px);
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     width: 296px;
     width: 100%;
     height: 100%;
@@ -593,13 +594,16 @@ header {
     height: 100%;
 
 }
+.swiper-slide:hover{
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
 .swiper-slide:hover .swiper-img{
     transform: scale(1.03);
 }
 .nth:last-child {
 
     margin-right: 0px;
-    margin-left: 12px;
+
 }
 
 
@@ -610,6 +614,7 @@ header {
     background-size: 100% 100%;
     position: relative;
     transition: all .3s;
+    
 
 }
 
@@ -623,9 +628,66 @@ header {
     transform: scale(.8);
     padding-top: 20px;
 }
+.swiper-product_img-promo .swiper-product_text{
+    position: absolute;
+    width: 100%;
+    font-size: 13px;
+    top: 90%;
+    font-weight: 400;
+    line-height: 1.31;
+    color: #555;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.swiper-product_img-promo {
+    display: flex;
+    padding-bottom: 40px;
+}
+.logo-tpbank {
+    width: 45px;
+    height: 45px;
+    transition: all .2s ease-in;
+    margin-right: 4px;
+}
 
+.logo-tpbank:hover {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #dee2e6;
+}
 
+.logo-kenovo {
+    width: 45px;
+    height: 45px;
+    transition: all .2s ease-in;
+}
+
+.logo-kenovo:hover {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #dee2e6;
+
+}
+
+.swiper-product_config {
+    margin-top: 8px;
+    background: #f8f9fa;
+    padding: 9px 10px 0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
 
 
 
@@ -740,7 +802,7 @@ header {
     padding: 10px 0;
 
 }
-
+.swiper-slide .price,
 .cart-item .price {
     color: #111010;
     font-weight: 600;
@@ -752,7 +814,7 @@ header {
     margin: 4px;
     align-items: center;
 }
-
+.swiper-slide .price-sale,
 .cart-item .price-sale {
     color: #fff;
     display: block;
@@ -761,7 +823,7 @@ header {
     padding-right: 6px;
     border-radius: 15px;
 }
-
+.swiper-slide .price-strike,
 .cart-item .price-strike {
     font-size: 14px;
     color: #919191;
@@ -770,8 +832,7 @@ header {
 .cart-item .cart-img {
     margin: 0 auto;
     display: block;
-}
-
+}.swiper-slide .item-name,
 .cart-item .item-name {
     font-size: 18px;
     font-weight: 600;
@@ -779,49 +840,8 @@ header {
     padding-left: 4px;
 }
 
-.swiper-product_img-promo {
-    display: flex;
-}
 
-.logo-tpbank {
-    width: 45px;
-    height: 45px;
-    transition: all .2s ease-in;
-    margin-right: 4px;
-}
 
-.logo-tpbank:hover {
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    background: #fff;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px #dee2e6;
-}
-
-.logo-kenovo {
-    width: 45px;
-    height: 45px;
-    transition: all .2s ease-in;
-}
-
-.logo-kenovo:hover {
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    background: #fff;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px #dee2e6;
-
-}
-
-.swiper-product_config {
-    margin-top: 8px;
-}
 
 @media only screen and (max-width: 992px) {
 

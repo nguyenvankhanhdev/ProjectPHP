@@ -270,11 +270,7 @@ header {
     text-decoration: none;
 }
 
-.nav .subnav>li>a {
-    /* font-size: 10px;
-    width: 100%;
-    height: 100%; */
-}
+
 
 .nav .nav-item:hover,
 .nav>li:hover {
@@ -1231,9 +1227,7 @@ header {
     .cart-item .cart-memory-item-active{
         font-size: 13px;
     }
-    .cart-item .cart-btn{
-        
-    }
+   
 
 /* ======================================== */
     .section-tabs .chapter-list {
