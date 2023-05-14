@@ -947,9 +947,7 @@ header {
     min-height: 210px;
 }
 
-.footer .contact-item li {
-    margin-bottom: 18px;
-}
+
 
 .footer .contact-item li a {
     text-decoration: none;
@@ -1448,5 +1446,8 @@ header {
 
         .swiper-product_img-promo .swiper-product_text {
             width: 95%;
+        }
+        .cart-item .cart-img{
+            max-width: 105px;
         }
     }

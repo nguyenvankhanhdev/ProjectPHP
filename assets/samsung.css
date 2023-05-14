@@ -965,9 +965,7 @@ header {
     min-height: 210px;
 }
 
-.footer .contact-item li {
-    margin-bottom: 18px;
-}
+
 
 .footer .contact-item li a {
     text-decoration: none;
@@ -1233,11 +1231,6 @@ header {
         font-size: 14px;
     }
 
-    .footer .support-pay {
-        display: none;
-        ;
-    }
-
     .cart-item .cart-memory {
         gap: 0;
         justify-content: space-around;
@@ -1360,11 +1353,13 @@ header {
         line-height: 142%;
         color: #6a737a;
     }
-
+    .cart-item .btn-compare a, .cart-item .btn-buynow a{
+        font-size: 12px;
+    }
 
     .cart-item .cart-btn
     {
-        display: none;
+       
     }
     /* ============== */
     .footer .contact-item ul a {
