@@ -504,8 +504,16 @@ a {
 .social-container {
     margin: 20px 0;
 }
-
-.social-container a {
+.social-container a:hover{
+    background: rgb(232, 34, 34);
+    transition: all .4s ease-in-out;
+    
+}
+.social-container a:hover i{
+    color: #fff;
+    transition: all .4s ease-in-out;
+}
+.social-container  a {
     border: 1px solid #DDDDDD;
     border-radius: 50%;
     display: inline-flex;
