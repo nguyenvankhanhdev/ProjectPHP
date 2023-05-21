@@ -1161,8 +1161,7 @@ header {
         font-size: 12px;
     }
 
-    .footer .contact-item .trtit,
-    .nav li {
+    .footer .contact-item .trtit{
         display: none;
     }
 
@@ -1185,10 +1184,10 @@ header {
         .home-page {
             display: none;
         }
-
-        .nav {
-            display: none;
-        }
+        .nav{
+           display: none !important;
+        } 
+        
 
         .logo-item img {
             width: 70px;
@@ -1232,8 +1231,6 @@ header {
         .menu {
             line-height: 30px;
             width: calc(100% / 5 - 5px) !important;
-
-
         }
 
         .item-product {
@@ -1328,8 +1325,8 @@ header {
             font-size: 12px;
         }
 
-        .footer .contact-item .trtit,
-        .nav li {
+        .footer .contact-item .trtit
+        {
             display: none;
         }
 
