@@ -269,6 +269,7 @@ html {
     margin-top: 14px;
     box-shadow: 0 0 2px #888888;
     border-radius: 12px;
+    margin-bottom: 24px;
     
 }
 .row{
@@ -329,8 +330,9 @@ html {
 }
 
 .cart-product {
-    margin-top: 30px;
+    margin: 30px 0;
     display: flex;
+
 }
 
 .cart-product img {
@@ -483,6 +485,95 @@ h4{
     background: #0948e5;
     transition: all .3s ease-in;
     color: #fff;
+}
+
+/* =====footer============= */
+.footer {
+    background-color: #f9f4f4;
+
+}
+
+.footer .footer-contact {
+    display: flex;
+    padding: 25px 0 15px;
+}
+
+.footer .contact-item {
+    padding: 0 12px;
+    width: 25%;
+}
+
+.footer .contact-item ul {
+    padding-left: 0;
+    min-height: 170px;
+}
+
+
+
+.footer .contact-item li a {
+    text-decoration: none;
+    color: #004ee9;
+    font-size: 14px;
+}
+
+.footer .contact-item .trtit {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer .contact-item .ftr2 p {
+    color: red;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.footer .contact-icon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.footer .contact-icon .icon-item {
+    margin-right: 2px;
+}
+
+.footer .contact-icon .icon-item .cth1 {
+    max-width: 40px;
+}
+
+.footer .contact-icon .icon-item .cth2 {
+    max-width: 132px;
+}
+
+.footer .contact-icon .icon-item .cth3 {
+    max-width: 56px;
+}
+
+.footer .contact-item li a:hover {
+    color: #a6a6e9;
+}
+.footer .contact-item li {
+    padding: 5px;
+}
+.footer .contact-item li{
+    list-style: none;
+}
+.footer .support-pay {
+    display: flex;
+
+}
+
+.footer .pay-item {
+    margin-right: 2px;
+}
+
+.footer .support-pay img {
+    max-width: 46px;
+}
+
+.fs-bxh span {
+    display: inline-block;
+    max-height: 115px;
 }
 /* =============== */
 @media only screen and (max-width: 992px){

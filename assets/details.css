@@ -465,6 +465,7 @@ html {
     margin-bottom: 10px;
     top: 80%;
 }
+
 .badge-warning {
     background-color: #ffae0d;
     padding: 5px;
@@ -594,6 +595,7 @@ html {
     border-radius: 8px;
     box-shadow: 0 0 6px #888888;
     padding: 15px;
+    margin-bottom: 24px;
 }
 
 .main-content {
@@ -634,7 +636,95 @@ html {
     width: auto;
 }
 
-@media only screen and (max-width: 992px) {
+
+/* =====footer============= */
+.footer {
+    background-color: #f9f4f4;
+
+}
+
+.footer .footer-contact {
+    display: flex;
+    padding: 25px 0 15px;
+}
+
+.footer .contact-item {
+    padding: 0 12px;
+    width: 25%;
+}
+
+.footer .contact-item ul {
+    padding-left: 0;
+    min-height: 180px;
+}
+
+
+
+.footer .contact-item li a {
+    text-decoration: none;
+    color: #004ee9;
+    font-size: 14px;
+}
+.footer .contact-item li{
+    list-style: none;
+    padding: 5px;
+}
+
+.footer .contact-item .trtit {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer .contact-item .ftr2 p {
+    color: red;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.footer .contact-icon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.footer .contact-icon .icon-item {
+    margin-right: 2px;
+}
+
+.footer .contact-icon .icon-item .cth1 {
+    max-width: 40px;
+}
+
+.footer .contact-icon .icon-item .cth2 {
+    max-width: 132px;
+}
+
+.footer .contact-icon .icon-item .cth3 {
+    max-width: 56px;
+}
+
+.footer .contact-item li a:hover {
+    color: #a6a6e9;
+}
+
+.footer .support-pay {
+    display: flex;
+
+}
+
+.footer .pay-item {
+    margin-right: 2px;
+}
+
+.footer .support-pay img {
+    max-width: 46px;
+}
+
+.fs-bxh span {
+    display: inline-block;
+    max-height: 115px;
+}
+@media only screen and (max-width: 576px) {
     .home-page {
         display: none;
     }
@@ -689,61 +779,120 @@ html {
         padding-left: 4px;
     }
 
-    .product .badge-warning{
+    .product .badge-warning {
         padding: 2px 10px;
         font-size: 12px;
         border-radius: 5px;
     }
+
     .product .badge-primary {
         padding: 2px 10px;
         font-size: 12px;
         border-radius: 5px;
     }
+
     .pd-top {
         flex-direction: column;
     }
-    .pd-top .start .rating{
-       margin: 15px 4px ;
-    
+
+    .pd-top .start .rating {
+        margin: 15px 4px;
+
     }
+
     .pd-top .start {
-       justify-content: start;
+        justify-content: start;
     }
-    .pd-body{
+
+    .pd-body {
         flex-direction: column;
     }
-    .pd-body .pd-left{
+
+    .pd-body .pd-left {
         width: calc(100%);
     }
-    .pd-left .pay-info{
+
+    .pd-left .pay-info {
         padding: 10px 0;
         font-size: 14px;
     }
-    .pd-left .info-buy{
+
+    .pd-left .info-buy {
         padding: 14px;
         font-size: 14px
     }
-    .pd-body .price{
+
+    .pd-body .price {
         font-size: 18px;
     }
-    .pd-body .card-title{
+
+    .pd-body .card-title {
         font-size: 16px;
         text-align: start;
         margin-left: 8px;
     }
-   
-    .pd-right{
-      margin-top: 10px;
-      width: calc(100%);
+
+    .pd-right {
+        margin-top: 10px;
+        width: calc(100%);
     }
+
     /* ---- */
-    .main-content h2{
+    .main-content h2 {
         font-size: 16px;
     }
-    .main-content ul li{
+
+    .main-content ul li {
         font-size: 12;
     }
-   .card-table{
-    display: inline-table;
-   }
+
+    .card-table {
+        display: inline-table;
+    }
+
+    /* ======footer============ */
+    .footer .contact-item ul a {
+        font-size: 12px;
+    }
+
+    .footer .contact-item .ftr2 p {
+        font-size: 13px;
+    }
+
+    .footer .contact-item ul {
+        display: flex !important;
+        flex-wrap: wrap;
+        min-height: 20px;
+    }
+
+    .footer .contact-item ul li {
+        width: 50%;
+    }
+
+    .footer .contact-item {
+        width: 100%;
+    }
+
+    .footer .contact-icon .icon-item {
+        margin: 0;
+        width: 50%;
+        padding-bottom: 2px;
+    }
+
+    .footer-contact {
+        display: table !important;
+    }
+
+    .footer .pay-item {
+        width: 50%;
+        margin: 0;
+    }
+
+    .contact-title {
+        text-align: center;
+        padding-bottom: 5px;
+        font-weight: 700;
+        color: red;
+    }
+
 }
