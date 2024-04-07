@@ -203,7 +203,7 @@
 <section>
     <div class="container">
         <div class="cartt">
-            <a href="">dasda</a>
+            
             <?php
             getProduct();
             ?>
