@@ -106,7 +106,7 @@ header {
 .input-box input {
     padding: 10px 10px;
     background-color: #ccc;
-    padding: 10px;
+    padding: 11px;
     width: 100%;
     border: none;
     border-radius: 6px;
@@ -124,14 +124,12 @@ header {
 
 .input-box-search {
     position: absolute;
-
-    width: 5%;
+    width: 8%;
     padding: 8px 2px;
     border: none;
     border-radius: 0 6px 6px 0px;
-    left: 91.6%;
+    left: 89.6%;
     top: 0;
-
 
 }
 
@@ -666,7 +664,7 @@ header {
     padding-top: 4px;
 }
 
-.cart {
+.cartt {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
@@ -752,7 +750,7 @@ header {
     box-shadow: 0px 1px 4px rgba(10, 10, 10, 0.15);
     opacity: 1;
 }
-
+.price-cart,
 .swiper-slide .price {
     color: #111010;
     font-weight: 600;
@@ -764,7 +762,7 @@ header {
     margin: 4px;
     align-items: center;
 }
-
+.price-cart,
 .cart-item .price {
     color: #111010;
     font-weight: 600;
@@ -785,13 +783,14 @@ header {
     display: block;
     background-color: red;
     padding: 4px 10px;
+    font-weight: 600;
     padding-right: 6px;
     border-radius: 15px;
 }
 
 .swiper-slide .price-strike,
 .cart-item .price-strike {
-    font-size: 14px;
+    font-size: 20px;
     color: #919191;
 }
 
@@ -915,6 +914,7 @@ header {
 
 .fs-bxh .fs-bhx-main li {
     width: 33.3333333333%;
+    list-style: none;
     margin: 0 4.5px;
 }
 
@@ -1448,3 +1448,6 @@ header {
             max-width: 105px;
         }
     }
+
+
+/* ===================   CART   =============== */

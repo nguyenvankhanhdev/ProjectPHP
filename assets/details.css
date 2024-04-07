@@ -337,7 +337,11 @@ html {
 
 .pd-top .details-name {
     font-weight: 500;
+    color: #780505 !important;
+    font-size: 30px;
 }
+    
+
 
 .pd-top .rating {
     margin-top: 16px;
@@ -463,7 +467,7 @@ html {
     align-items: baseline;
     margin-left: 10px;
     margin-bottom: 10px;
-    top: 80%;
+
 }
 
 .badge-warning {
@@ -524,6 +528,17 @@ html {
     border-radius: 6px;
 }
 
+.pd-right .price_details{
+    display: flex;
+
+}
+
+.pd-right strike{
+    margin-top: 16px;
+    font-size: 20px;
+   
+
+}
 .pd-body .price {
     padding: 6px 10px;
     font-weight: 600;
