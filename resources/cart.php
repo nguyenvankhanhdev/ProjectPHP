@@ -49,7 +49,6 @@ function cart()
                 confirm($query);
                 while ($row = fetch_array($result)) {
                     $product_price_sub = number_format($sub = ($row['product_price'] * $value), 0, ',', ',');
-
                     $product_price_formatted = number_format($row['product_price'], 0, ',', ',');
                     $item_quantity += $value;
                     $product = <<<DELIMETER
@@ -69,7 +68,6 @@ function cart()
                         <span id="value">{$value}</span>
                         <a href="../resources/cart.php?remove={$row['product_id']}" class="btn decrease minus btn-success"> <i class="bi bi-dash-lg"></i></a>
                         <a href="../resources/cart.php?add={$row['product_id']}" class="btn increase plus btn-danger"> <i class="bi bi-plus"></i></i></a>
-                         
                         <span>{$product_price_sub}đ</span>
                     </div>
                     <h3 style="color: red; font-weight: 500"><?php echo display_message(); ?></h3>
