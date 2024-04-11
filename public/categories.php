@@ -33,7 +33,7 @@
                 <div class="container">
                     <div class="flex logo-inner">
                         <div class="logo-item flex-align-center">
-                            <a href="./index.html"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
+                            <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
                         </div>
                         <div class="g-search">
                             <form action="">
@@ -45,17 +45,10 @@
                                 </div>
                             </form>
                         </div>
-
-                        <!-- <div class="g-search">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success " type="submit">Search</button>
-                            </form>
-                        </div> -->
                         <div class="home-page">
                             <div class="home-page-inner">
                                 <div class="home-page-item">
-                                    <a href="./index.html" target="_blank"><i class="bi bi-house-door-fill"></i>
+                                    <a href="./index.php" target="_blank"><i class="bi bi-house-door-fill"></i>
                                         Trang
                                         chủ</a>
                                 </div>
@@ -312,8 +305,8 @@
         <section>
             <div class="slider">
                 <div class="container">
-                    <div class="row ">
-                        <div class="col-3 p-0 p-r-30 filter">
+                    <div class="row">
+                        <div class="col-3 p-0 p-r-30 filter fixed-sidebar">
                             <div class="cdt-filter">
                                 <div class="cdt-filter_block">
                                     <div class="cdt-filter_title">
@@ -395,10 +388,6 @@
                             <div class="cart" id="products">
                              
 
-
-
-
-                            
 
                             </div>
                         </div>

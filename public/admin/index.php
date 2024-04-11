@@ -1,5 +1,5 @@
 <?php require_once("../../resources/config.php"); ?>
-<?php include(TEMPLATE_BACK ."/header.php"); ?>
+<?php include(TEMPLATE_BACK . "/header.php"); ?>
 D
 <?php if (!isset($_SESSION['username'])) {
   redirect("../../public");
@@ -10,14 +10,8 @@ D
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
-          Dashboard <small>Statistics Overview</small>
-        </h1>
-        <ol class="breadcrumb">
-          <li class="active">
-            <i class="fa fa-dashboard"></i> Dashboard
-          </li>
-        </ol>
+
+
       </div>
     </div>
     <!-- /.row -->
@@ -32,6 +26,21 @@ D
     }
     if (isset($_GET['add_product'])) {
       include(TEMPLATE_BACK . "/add_product.php");
+    }
+    if (isset($_GET['products'])) {
+      include(TEMPLATE_BACK . "/products.php");
+    }
+    if (isset($_GET['edit_product'])) {
+      include(TEMPLATE_BACK . "/edit_product.php");
+    }
+    if (isset($_GET['delete_products'])) {
+      include(TEMPLATE_BACK . "/delete_product.php");
+    }
+    if (isset($_GET['categories'])) {
+      include(TEMPLATE_BACK . "/categories.php");
+    }
+    if (isset($_GET['delete_categories'])) {
+      include(TEMPLATE_BACK . "/delete_categories.php");
     }
 
 

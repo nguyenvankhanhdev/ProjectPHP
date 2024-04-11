@@ -79,8 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
       (selectedPrices.length === 0 || selectedPrices.includes(getPriceCategory(product.product_price)))
     );
 
-    console.log(selectedBrands);
-    console.log(selectedPrices);
     displayProducts(filteredData);
   }
 
@@ -96,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return 5;
     }
   }
-
   function displayProducts(data) {
     const productsDiv = document.getElementById('products');
     productsDiv.innerHTML = '';
@@ -121,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="circle-item pink" style="background:#74424F"></div>
                 </div>
                 <div class="cart-price">
-                    <div class="price-sale">${product.product_price} đ</div>
+                    <div class="price-sale">${product.product_price.toLocaleString()} đ</div>
                     <div class="price-strike">
                         <strike>40.990.000đ</strike>
                     </div>

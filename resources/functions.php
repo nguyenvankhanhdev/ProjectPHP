@@ -51,7 +51,7 @@ function getProduct()
     $send_query = query($query);
     confirm($send_query);
     while ($row = fetch_array($send_query)) {
-        $formatted = number_format($row['product_price'],0,",",".");
+        $formatted = number_format($row['product_price'], 0, ",", ".");
         $product = <<<DELIMITER
         <div class='cart-item'>
             <div class="cart-product-img">
@@ -259,7 +259,176 @@ function login_user()
             redirect("admin");
         }
     }
-
 }
 
-?>
+
+// product Admin//
+
+function get_product_in_admin()
+{
+    $query = 'SELECT * FROM products ';
+    $send_query = query($query);
+    confirm($send_query);
+    while ($row = fetch_array($send_query)) {
+        $cate = show_cate_add_product($row['product_cat_id']);
+        $brand = show_brands_add_product($row['brand_id']);
+        $formated = number_format($row['product_price'], 0, ",", ".");
+        $product = <<<DELIMETER
+
+        <tr>
+            <td>{$row['product_id']}</td>
+            <td style="max-width:80px;">{$row['product_title']}</td>
+            <td style="max-width:100px;"><br>
+                <a href="index.php?edit_product&id={$row['product_id']}"><img class="image-responsive" style="max-width:100px;" src="../../assets/img/{$row['product_image']}" alt="logo.png"></a>
+            </td>
+            <td>{$cate}</td>
+            <td>{$brand}</td>
+            <td>{$formated}đ</td>
+            <td>{$row['Display']}</td>
+            <td>{$row['Chip']}</td>
+            <td>{$row['Ram']}</td>
+            <td>{$row['Memory']}</td>
+            <td>
+                <a class ="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+        </tr>
+        DELIMETER;
+        echo $product;
+    }
+}
+
+// add_product Admin//
+function add_product()
+{
+
+    if (isset($_POST['publish'])) {
+        $pro_title = escape_string($_POST['product_title']);
+        $pro_descrip = escape_string($_POST['product_description']);
+        $pro_price = escape_string($_POST['product_price']);
+        $pro_cat_id = escape_string($_POST['product_cat_id']);
+        $pro_brand_id = escape_string($_POST['product_brand_id']);
+        $display = escape_string($_POST['display']);
+        $chip = escape_string($_POST['chip']);
+        $ram = escape_string($_POST['ram']);
+        $memory = escape_string($_POST['memory']);
+        $quantity = escape_string($_POST['quantity']);
+
+        $pro_img = $_FILES['image']['name'];
+        $img_tmp = $_FILES['image']['tmp_name'];
+        move_uploaded_file($img_tmp, "../../assets/img/$pro_img");
+
+
+        $query = query("INSERT INTO products (product_title, product_cat_id, brand_id, product_price, product_quantity, product_description, product_image, Display, Chip, Ram, Memory) VALUES ('{$pro_title}', {$pro_cat_id}, {$pro_brand_id}, {$pro_price}, {$quantity}, '{$pro_descrip}', '{$pro_img}', '{$display}', '{$chip}', '{$ram}', '{$memory}')");
+        confirm($query);
+        set_massage("Thêm thành công");
+        redirect("index.php?products");
+    }
+}
+function update_product()
+{
+
+    if (isset($_POST['update'])) {
+        $pro_title = escape_string($_POST['product_title']);
+        $pro_descrip = escape_string($_POST['product_description']);
+        $pro_price = escape_string($_POST['product_price']);
+        $pro_cat_id = escape_string($_POST['product_cat_id']);
+        $pro_brand_id = escape_string($_POST['product_brand_id']);
+
+        $display = escape_string($_POST['display']);
+        $chip = escape_string($_POST['chip']);
+        $ram = escape_string($_POST['ram']);
+        $memory = escape_string($_POST['memory']);
+        $quantity = escape_string($_POST['quantity']);
+
+        $pro_img = $_FILES['image']['name'];
+        $img_tmp = $_FILES['image']['tmp_name'];
+
+        if (empty($pro_img)) {
+            $get_pic = query("SELECT product_image FROM products WHERE product_id = " . escape_string($_GET['id']) . " ");
+            confirm($get_pic);
+            while ($row = fetch_array($get_pic)) {
+                $pro_img = $row['product_image'];
+            }
+        }
+
+        move_uploaded_file($img_tmp, "../../assets/img/$pro_img");
+
+
+        $query = "UPDATE products SET ";
+        $query  .= " product_title ='{$pro_title}',";
+        $query  .= " product_cat_id ={$pro_cat_id} ,";
+        $query  .= " brand_id ={$pro_brand_id}, ";
+        $query  .= " product_price ={$pro_price} ,";
+        $query  .= " product_quantity ={$quantity},";
+        $query  .= " product_image ='{$pro_img}',";
+        $query  .= " product_description ='{$pro_descrip}',";
+        $query  .= " Display ='{$display}',";
+        $query  .= " Chip ='{$chip}',";
+        $query  .= " Ram ='{$ram}',";
+        $query  .= " Memory ='{$memory}'";
+        $query  .= " WHERE product_id =" . escape_string($_GET['id']) . ' ';
+
+
+
+        $send_query = query($query);
+        confirm($send_query);
+
+        set_massage("Update thành công");
+        redirect("index.php?products");
+    }
+}
+
+function show_cate_add_product($pro_cat_id)
+{
+    $query = query("SELECT * FROM categories WHERE cat_id= '{$pro_cat_id}' ");
+    confirm($query);
+    while ($row = fetch_array($query)) {
+        return $row['cat_title'];
+    }
+}
+
+function show_brands_add_product($pro_brand_id)
+{
+    $query = query("SELECT * FROM brands WHERE brand_id= '{$pro_brand_id}' ");
+    confirm($query);
+    while ($row = fetch_array($query)) {
+        return $row['brand_name'];
+    }
+}
+
+function showCategories()
+{
+    $query = 'SELECT * FROM categories ';
+    $send_query = query($query);
+    confirm($send_query);
+    while ($row = fetch_array($send_query)) {
+        $product = <<<DELIMETER
+        <tr>
+            <td>{$row['cat_id']}</td>
+            <td style="max-width:80px;">{$row['cat_title']}</td>
+            <td>
+            <a class ="btn btn-danger" href="../../resources/templates/back/delete_categories.php?id={$row['cat_id']}">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </td>
+        </tr>
+        DELIMETER;
+        echo $product;
+    }
+}
+
+function addCate()
+{
+    if (isset($_POST['addcate'])) {
+        $cat_title = escape_string($_POST['cat_title']);
+        if (isset($cat_title) || $cat_title == " ") {
+            set_massage("<p class='bg-danger'>THIS CANNOT BE EMPTY</p>");
+        } else {
+            $query = query("INSERT INTO categories (cat_title) VALUES('{$cat_title}')");
+            confirm($query);
+            set_massage("CATEGORY CREATED");
+        }
+    }
+}

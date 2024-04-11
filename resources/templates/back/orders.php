@@ -3,11 +3,10 @@
     <div class="row">
         <h1 class="page-header">
             All Orders
-
         </h1>
     </div>
-
     <div class="row">
+       
         <table class="table table-hover">
             <thead>
 
