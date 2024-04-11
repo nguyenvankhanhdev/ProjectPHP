@@ -432,3 +432,22 @@ function addCate()
         }
     }
 }
+
+function add_img()
+{
+    if (isset($_POST['publish'])) {
+        if (isset($_FILES['images']['name'])) {
+            $pro_id = $_POST['number'];
+            foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+                $file_name = $_FILES['images']['name'][$key];
+                $file_tmp = $_FILES['images']['tmp_name'][$key];
+                move_uploaded_file($file_tmp, "../../assets/img/$file_name");
+                $sql = "INSERT INTO pro_images (img_name, pro_id) VALUES ('$file_name','$pro_id')";
+                query($sql);
+                confirm($sql);
+            }
+        } else {
+            echo "Vui lòng chọn ít nhất một tệp hình ảnh.";
+        }
+    }
+}

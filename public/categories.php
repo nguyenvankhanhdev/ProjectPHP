@@ -387,8 +387,6 @@
                         <div class="col-9 p-0">
                             <div class="cart" id="products">
                              
-
-
                             </div>
                         </div>
                     </div>

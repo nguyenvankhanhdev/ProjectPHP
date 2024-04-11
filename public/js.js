@@ -144,7 +144,15 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".review").addEventListener("click", function (event) {
     event.preventDefault();
-    var contentElement = document.getElementById("content");
+    var contentElement = document.getElementById("well");
+    contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("question").addEventListener("click", function (event) {
+    event.preventDefault();
+    var contentElement = document.getElementById("media");
     contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });

@@ -41,9 +41,10 @@ D
     }
     if (isset($_GET['delete_categories'])) {
       include(TEMPLATE_BACK . "/delete_categories.php");
+    } 
+    if (isset($_GET['add_img'])) {
+      include(TEMPLATE_BACK . "/add_img.php");
     }
-
-
     ?>
 
   </div>

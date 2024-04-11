@@ -25,9 +25,7 @@
             <div class="prd-sale">
                 <div class="prd-top">
                     <div class="tittle">
-
                         <h2>Khuyến mãi hot</h2>
-
                     </div>
                 </div>
                 <div class="prd-sale_product">

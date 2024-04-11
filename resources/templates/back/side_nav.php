@@ -12,7 +12,9 @@
         <li>
             <a href="index.php?add_product"><i class="fa fa-fw fa-table"></i> Add Product</a>
         </li>
-
+        <li>
+            <a href="index.php?add_img"><i class="fa fa-fw fa-wrench"></i>Add Image</a>
+        </li>
         <li>
             <a href="index.php?categories"><i class="fa fa-fw fa-desktop"></i> Categories</a>
         </li>
