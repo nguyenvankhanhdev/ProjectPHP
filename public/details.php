@@ -11,10 +11,8 @@
     <?php
     $query = "SELECT * FROM products WHERE product_id =" . escape_string($_GET['id']) . " ";
     $query_details = query($query);
-    while ($row = fetch_array($query_details)) :
+    while ($row = fetch_array($query_details)):
         $formated_price = number_format($row['product_price'], 0, ",", ".");
-
-
     ?>
         <div class="pd-top">
             <h1 class="details-name title-name"> <?php echo $row['product_title']; ?></h1>
@@ -33,16 +31,49 @@
 
         <div class="pd-body">
             <div class="pd-left">
-                <div class="image  ">
-                    <img class="image-cart" src="../assets/img/<?php echo $row['product_image']; ?>" alt="">
 
 
+
+
+                <!-- <img class="image-cart" src="../assets/img/<?php echo $row['product_image']; ?>" alt="">
                     <div class="product">
                         <div class="badge-warning">Trả góp 0%</div>
                         <div class="badge-primary">Giảm 5.000.000đ</div>
-                    </div>
+                    </div> -->
 
+                <div class="image">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img style="width: 67%;" src="../assets/img/<?php echo $row['product_image']; ?>" class="d-block " alt="logo.png">
+                            </div>
+                            <?php
+                            set_img_product();
+                            ?>
+
+                        </div>
+                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon  border-secondary  " aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
+
+
+
+
                 <div class="info">
                     <a href="../resources/cart.php?add=<?php echo $row['product_id']; ?>">
                         <button class="info-buy">
@@ -269,6 +300,7 @@
 </footer>
 </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="../public/js.js"></script>
 

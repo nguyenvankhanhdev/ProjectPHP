@@ -657,7 +657,7 @@ header {
 
 .cart-img:hover {
     transform: scale(1.1);
-    transition: all .5s ease-out
+    transition: all .3s ease-out
 }
 
 .p-t-4 {

@@ -1,5 +1,5 @@
 <div class="col-md-12">
-
+<?php display_message(); ?>
     <div class="row">
         <h1 class="page-header">
             Add Image

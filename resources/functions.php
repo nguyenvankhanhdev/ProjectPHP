@@ -235,9 +235,7 @@ function get_categories_in_page()
             </div>
         </div>
     </div>
-   
     DELIMITER;
-
             echo $cat;
         }
     }
@@ -248,12 +246,19 @@ function login_user()
     if (isset($_POST['submit1'])) {
         $username = escape_string($_POST['username_login']);
         $password = escape_string($_POST['password_login']);
-        $query = query("SELECT * FROM users WHERE username ='{$username}'AND password = '{$password}'");
-        confirm($query);
-        if (mysqli_num_rows($query) == 0) {
+        $query1 = query("SELECT * FROM users WHERE username ='{$username}'AND password = '{$password}'");
+        confirm($query1);
+        if (mysqli_num_rows($query1) == 0) {
             set_massage("Your Password or Username are wrong");
             redirect("log-in.php");
         } else {
+            
+            $query = query("SELECT * FROM users WHERE username ='{$username}'");
+            confirm($query);
+
+            if ($row = fetch_array($query)) {
+                $_SESSION['id'] = $row['user_id'];
+            }
             $_SESSION['username'] = $username;
             set_massage("Welcom to Admin {$username}");
             redirect("admin");
@@ -445,9 +450,26 @@ function add_img()
                 $sql = "INSERT INTO pro_images (img_name, pro_id) VALUES ('$file_name','$pro_id')";
                 query($sql);
                 confirm($sql);
+                set_massage("Thành công");
             }
         } else {
             echo "Vui lòng chọn ít nhất một tệp hình ảnh.";
+        }
+    }
+}
+
+function set_img_product()
+{
+    if (isset($_GET['id'])) {
+        $query = query("SELECT * FROM pro_images WHERE pro_id = " . escape_string($_GET['id'] . " "));
+        confirm($query);
+        while ($row = fetch_array($query)) {
+            $img = <<<DELIMETER
+            <div class="carousel-item">
+                <img src="../assets/img/{$row['img_name']}" class="d-block w-100" alt="logo.png">
+            </div>
+            DELIMETER;
+            echo $img;
         }
     }
 }

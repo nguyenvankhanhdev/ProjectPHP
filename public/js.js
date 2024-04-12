@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div class="cart-btn">
                 <div class="btn-buynow">
-                    <a href="">Mua ngay</a>
+                    <a href="../resources/cart.php?add=${product.product_id}">Mua ngay</a>
                 </div>
             </div>
         </div>

@@ -388,6 +388,9 @@
                             <div class="cart" id="products">
                              
                             </div>
+                            <div class="cart-loadmore" align="center">
+                                <button class="btn btn-secondary" id="btn-loadmore">Xem Thêm</button>
+                            </div>
                         </div>
                     </div>
                 </div>
