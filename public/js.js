@@ -170,8 +170,3 @@ function detailsPrice() {
 
 detailsPrice();
 
-
-
-
-
-

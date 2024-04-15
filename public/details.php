@@ -1,17 +1,57 @@
 <?php require_once("../resources/config.php"); ?>
 <?php include(TEMPLATE_FRONT . DS . "header_details.php"); ?>
+
+<!-- Kiểm tra coi có login chưa khi bấm nút submit và lưu vào database bỏ comment_status ra nhá  -->
+<?php
+
+if (isset($_POST['submit'])) {
+
+    if (!isset($_SESSION['id'])) {
+
+        header("Location: log-in.php");
+        exit;
+    }
+}
+if (isset($_POST['submit'])) {
+
+    $comment_pro_id = $_GET['id'];
+    $comment_user_id = $_SESSION['id'];
+    $comment_content = $_POST['comment_content'];
+    if (!empty($comment_content)) {
+        // Nếu khác rỗng, thực hiện thêm vào cơ sở dữ liệu
+        $query = "INSERT INTO comments (comment_pro_id, comment_user_id, comment_content, comment_date) ";
+        $query .= "VALUES ('$comment_pro_id', '$comment_user_id', '$comment_content', NOW())";
+        $result = mysqli_query($connection, $query);
+
+        if ($result) {
+
+            header("Location: details.php?id=$comment_pro_id");
+            exit;
+        } else {
+
+            echo "<script>alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');</script>";
+        }
+    } else {
+        // Nếu comment_content rỗng, hiển thị thông báo lỗi
+        echo "<script>alert('Vui lòng nhập bình luận!');</script>";
+    }
+}
+?>
+
 <div class="container">
+
     <div class=" row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./index.html" target="_blank">Trang chủ</a></li>
             <li class="breadcrumb-item"><a href="">Điện thoại</a></li>
             <li class="breadcrumb-item"><a href="">iPhone</a></li>
+
         </ol>
     </div>
     <?php
     $query = "SELECT * FROM products WHERE product_id =" . escape_string($_GET['id']) . " ";
     $query_details = query($query);
-    while ($row = fetch_array($query_details)):
+    while ($row = fetch_array($query_details)) :
         $formated_price = number_format($row['product_price'], 0, ",", ".");
     ?>
         <div class="pd-top">
@@ -154,7 +194,6 @@
                 </div>
             </div>
         </div>
-
         <div class="content" id="content">
             <div class="main-content">
                 <h2>Đặc điểm nổi bật</h2>
@@ -170,48 +209,107 @@
         <!-- // comment -->
         <div class="well" id="well">
             <h4>Leave a Comment:</h4>
-            <form role="form">
+            <form role="form" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" name="comment_content" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-        <div class="media" id="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Start Bootstrap
-                    <small>August 25, 2014 at 9:30 PM</small>
-                </h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-        </div>
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Start Bootstrap
-                    <small>August 25, 2014 at 9:30 PM</small>
-                </h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                <!-- Nested Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Nested Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        <div class="comment">
+            <?php
+
+            $product_id = $_GET['id'];
+
+            $query = "SELECT * FROM comments WHERE comment_pro_id = $product_id ORDER BY comment_id DESC";
+            $result = mysqli_query($connection, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $user_id = $row['comment_user_id'];
+                    $query1 = "SELECT * FROM users WHERE user_id = $user_id";
+                    $result1 = mysqli_query($connection, $query1);
+                    if (mysqli_num_rows($result) > 0) {
+                        $name = mysqli_fetch_assoc($result1);
+                    }
+
+            ?>
+                    <div class="media" id="media">
+                        <div class="user-block">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" style=" margin-right: 16px; border-radius: 45px;" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><?php echo $name['username']; ?>
+                                </h4>
+                                <?php echo "<p>{$row['comment_content']}</p>"; ?>
+                                <small class="date_cmt" id="comment_date"><?php echo $row['comment_date']; ?></small>
+                                <i class="bi bi-dot"></i>
+                                <p class="likes re-link">Thích </p>
+                                <i class="bi bi-dot"></i>
+                                <p class="reply re-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Trả lời</p>
+
+                                <!-- Modal -->
+                                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Trả lời </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="" method="post">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" name="comment_content" rows="3"></textarea>
+                                                    </div>
+                                                    
+                                                    </br>
+                                                    <div class="form-group">
+                                                        <input class="form-control" name="replyName" placeholder="Nhập họ và tên">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" name="replycmt">Hoàn tất</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="user-block reply-cmt">
+                            <div class="avatar avatar-md avatar-logo avatar-circle">
+                                <div class="avatar-shape"><img src="https://fptshop.com.vn/api-data/comment/Content/desktop/images/logo.png" alt="logo"></div>
+                                <div class="avatar-info">
+                                    <div class="avatar-name">
+                                        <div class="text">Nguyễn Văn Huy</div>
+                                    </div>
+                                    <div class="avatar-para">
+                                        <div class="text">
+                                            <p>Chào anh Tú Lâm,</p>
+                                            <p>Dạ, máy cũ lỗi vẫn áp dụng chương trình "Đổi máy cũ - 2G - hư hỏng tặng PMH giảm thêm 300.000đ" được ạ.&nbsp;Để được hỗ trợ chi tiết về sản phẩm, anh vui lòng liên hệ tổng đài miễn phí 18006601 hoặc để lại SĐT bên em liên hệ tư vấn nhanh nhất ạ.</p>
+                                            <p>Thân mến!</p>
+                                        </div>
+                                    </div>
+                                    <div class="avatar-time">
+                                        <div class="text text-grayscale">3 ngày trước</div> <i class="bi bi-dot"></i></i>
+                                        <div class="likes re-link">Thích </div> <i class="bi bi-dot"></i></i>
+                                        <div class="reply re-link" aria-controls="comment-reply-invalid">Trả lời</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- End Nested Comment -->
-            </div>
+            <?php
+                }
+            } else {
+                echo "Chưa có bình luận nào cho sản phẩm này.";
+            }
+            ?>
         </div>
+
 </div>
 
 <?php endwhile; ?>

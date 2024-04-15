@@ -18,6 +18,7 @@
                     <th>Chip</th>
                     <th>Ram</th> 
                     <th>Memory</th>
+                    <th>Comments</th>
                     <th>Delete</th>
                 </tr>
             </thead>

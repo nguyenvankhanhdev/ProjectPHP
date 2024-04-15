@@ -8,7 +8,6 @@
         <?php include(TEMPLATE_FRONT . DS . "cate_box.php"); ?>
     </div>
 </div>
-<?php echo $_SESSION['id']; ?>
 <section>
     <div class="container">
         <div class="banner">

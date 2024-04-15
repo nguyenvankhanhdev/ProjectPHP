@@ -246,16 +246,12 @@ function login_user()
     if (isset($_POST['submit1'])) {
         $username = escape_string($_POST['username_login']);
         $password = escape_string($_POST['password_login']);
-        $query1 = query("SELECT * FROM users WHERE username ='{$username}'AND password = '{$password}'");
-        confirm($query1);
-        if (mysqli_num_rows($query1) == 0) {
+        $query = query("SELECT * FROM users WHERE username ='{$username}'AND password = '{$password}'");
+        confirm($query);
+        if (mysqli_num_rows($query) == 0) {
             set_massage("Your Password or Username are wrong");
             redirect("log-in.php");
         } else {
-            
-            $query = query("SELECT * FROM users WHERE username ='{$username}'");
-            confirm($query);
-
             if ($row = fetch_array($query)) {
                 $_SESSION['id'] = $row['user_id'];
             }
@@ -271,35 +267,44 @@ function login_user()
 
 function get_product_in_admin()
 {
+
     $query = 'SELECT * FROM products ';
     $send_query = query($query);
     confirm($send_query);
     while ($row = fetch_array($send_query)) {
+        $product_id = $row['product_id'];
+        $query1 = "SELECT COUNT(*) AS total_comments FROM comments WHERE comment_pro_id = $product_id ";
+        $result = query( $query1);
+        confirm($result);
+        $count = mysqli_fetch_assoc($result)['total_comments'];
         $cate = show_cate_add_product($row['product_cat_id']);
         $brand = show_brands_add_product($row['brand_id']);
         $formated = number_format($row['product_price'], 0, ",", ".");
         $product = <<<DELIMETER
-
-        <tr>
-            <td>{$row['product_id']}</td>
-            <td style="max-width:80px;">{$row['product_title']}</td>
-            <td style="max-width:100px;"><br>
-                <a href="index.php?edit_product&id={$row['product_id']}"><img class="image-responsive" style="max-width:100px;" src="../../assets/img/{$row['product_image']}" alt="logo.png"></a>
-            </td>
-            <td>{$cate}</td>
-            <td>{$brand}</td>
-            <td>{$formated}đ</td>
-            <td>{$row['Display']}</td>
-            <td>{$row['Chip']}</td>
-            <td>{$row['Ram']}</td>
-            <td>{$row['Memory']}</td>
-            <td>
-                <a class ="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-            </td>
-        </tr>
-        DELIMETER;
+    
+            <tr>
+                <td>{$row['product_id']}</td>
+                <td style="max-width:80px;">{$row['product_title']}</td>
+                <td style="max-width:100px;"><br>
+                    <a href="index.php?edit_product&id={$row['product_id']}"><img class="image-responsive" style="max-width:100px;" src="../../assets/img/{$row['product_image']}" alt="logo.png"></a>
+                </td>
+                <td>{$cate}</td>
+                <td>{$brand}</td>
+                <td>{$formated}đ</td>
+                <td>{$row['Display']}</td>
+                <td>{$row['Chip']}</td>
+                <td>{$row['Ram']}</td>
+                <td>{$row['Memory']}</td>
+                <td>
+                    <a href="../details.php?id={$row['product_id']}">{$count}</a>
+                </td>
+                <td>
+                    <a class ="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </td>
+            </tr>
+            DELIMETER;
         echo $product;
     }
 }
