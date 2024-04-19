@@ -46,7 +46,6 @@ function fetch_array($query)
 // font_end
 function getProduct()
 {
-
     $query = 'SELECT * FROM products ';
     $send_query = query($query);
     confirm($send_query);
@@ -333,7 +332,7 @@ function add_product()
         $query = query("INSERT INTO products (product_title, product_cat_id, brand_id, product_price, product_quantity, product_description, product_image, Display, Chip, Ram, Memory) VALUES ('{$pro_title}', {$pro_cat_id}, {$pro_brand_id}, {$pro_price}, {$quantity}, '{$pro_descrip}', '{$pro_img}', '{$display}', '{$chip}', '{$ram}', '{$memory}')");
         confirm($query);
         set_massage("Thêm thành công");
-        redirect("index.php?products");
+        //redirect("index.php?products");
     }
 }
 function update_product()
@@ -478,3 +477,4 @@ function set_img_product()
         }
     }
 }
+

@@ -1,14 +1,9 @@
 <?php
-
-
 header('Content-Type: application/json');
-
-
 $dbHost = 'localhost';
 $dbName = 'e_com';
 $dbUser = 'root';
 $dbPass = '';
-
 try {
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -17,24 +12,25 @@ try {
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['id'])) {
-        $product_id = $_GET['id'];
-        $statement = $pdo->prepare("SELECT * FROM products WHERE id = :id");
-        $statement->bindParam(':id', $product_id);
+    if (isset($_GET['cat_id'])) {
+        $product_cat_id = $_GET['cat_id'];
+        $statement = $pdo->prepare("SELECT * FROM products WHERE product_cat_id = :id");
+        $statement->bindParam(':id', $product_cat_id);
         $statement->execute();
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
-        if ($user) {
-            echo json_encode($user);
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if ($products) {
+            echo json_encode($products);
         } else {
             http_response_code(404);
-            echo json_encode(['error' => 'Product not found']);
+            echo json_encode(['error' => 'No products found for the given category']);
         }
     } else {
         $statement = $pdo->query("SELECT * FROM products");
-        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($users);
+        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($products);
     }
 } else {
     http_response_code(405);
     echo json_encode(['error' => 'Method Not Allowed']);
 }
+

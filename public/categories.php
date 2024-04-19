@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +21,6 @@
   crossorigin="anonymous"></script>
 
 </head>
-
 <body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 
@@ -55,12 +53,12 @@
                             </div>
                         </div>
                         <div class="market">
-                            <a href="./cart.html" target="_blank"><i class="bi bi-cart"></i></a>
+                            <a href="./checkout.php" target="_blank"><i class="bi bi-cart"></i></a>
                         </div>
                         <div class="register">
                             <div class="register-inner">
                                 <div class="register-login">
-                                    <a href="./log-in.html" target="_blank"> Đăng kí / Đăng nhập</a>
+                                    <a href="./log-in.php" target="_blank"> Đăng kí / Đăng nhập</a>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +77,7 @@
                             <div class="nav-item"><a href="#">Nokia</a></div>
                         </div>
                     </li>
-                    <li class="menu"><a class="item-product" href="https://fptshop.com.vn" target="_blank"> <i class="bi bi-laptop"></i> Laptop</a>
+                    <li class="menu"><a class="item-product" href="" target="_blank"> <i class="bi bi-laptop"></i> Laptop</a>
                         <div class="subnav">
                             <div class="nav-item"><a href="#">MacBook</a></div>
                             <div class="nav-item"><a href="#">MSI</a></div>
@@ -120,7 +118,7 @@
         </div>
     </header>
     <?php
-    $cat_id = $_GET['cat_id'];
+    $cat_id = isset($_GET['cat_id']) ? $_GET['cat_id']: 1 ;
     $query1 = "SELECT * FROM categories WHERE cat_id =" . escape_string($cat_id) . "";
     $cate_query = query($query1);
     confirm($cate_query);

@@ -7,11 +7,13 @@
             <li class="breadcrumb-item"><a href="">Giỏ hàng</a></li>
         </ol>
     </div>
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
+    <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
+        <!-- <input type="hidden" name="cmd" value="_cart">
         <input type="hidden" name="business" value="sb-8pk4029773325@business.example.com">
         <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="upload" value="1"> -->
+    <form action="" method="post">
+        
         <div class="cart-header">
             <div class="cart-title">
                 <p>Giỏ hàng</p>
@@ -24,10 +26,11 @@
                     <p class="total-tittle">Tổng tiền tạm tính</p>
                     <!-- biến số lượng trong giỏ hàng -->
                     <p class="total-price">
-                       Số lượng: <?php echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : $_SESSION['item_quantity'] = "0"; ?>
+                        Số lượng: <?php echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : $_SESSION['item_quantity'] = "0"; ?>
                     </p>
                     <p class="total-price">
-                       Đơn Giá: <?php $total =""; echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0"; ?>đ
+                        Đơn Giá: <?php $total = "";
+                                    echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] = "0"; ?>đ
                     </p>
                 </div>
                 <div class="summit">

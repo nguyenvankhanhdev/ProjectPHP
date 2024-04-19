@@ -9,7 +9,6 @@
     </div>
 
     <?php if (isset($_POST['submit'])) {
-
         $city = $_POST['city'];
         $district = $_POST['district'];
         $ward = $_POST['ward'];

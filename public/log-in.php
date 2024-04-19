@@ -16,9 +16,9 @@
                             <a href="#" class="social"><i class="bi bi-linkedin"></i></a>
                         </div>
                         <span>hoặc sử dụng email của bạn để đăng ký</span>
-                        <input class="input" type="text" name="username" placeholder="Name" />
+                        <input class="input" type="text" name="username" placeholder="UserName" />
                         <input class="input" type="email" name="email" placeholder="Email" />
-                        <input class="input" type="password" name="password" placeholder="Password" />
+                        <input class="input" type="password" name="password" placeholder="Password"/>
                         <input type="submit" class="button" name="submit2">
                     </form>
                 </div>

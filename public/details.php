@@ -71,18 +71,8 @@ if (isset($_POST['submit'])) {
 
         <div class="pd-body">
             <div class="pd-left">
-
-
-
-
-                <!-- <img class="image-cart" src="../assets/img/<?php echo $row['product_image']; ?>" alt="">
-                    <div class="product">
-                        <div class="badge-warning">Trả góp 0%</div>
-                        <div class="badge-primary">Giảm 5.000.000đ</div>
-                    </div> -->
-
                 <div class="image">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -93,7 +83,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img style="width: 67%;" src="../assets/img/<?php echo $row['product_image']; ?>" class="d-block " alt="logo.png">
+                                <img style="width: 67%; margin-left:100px;" src="../assets/img/<?php echo $row['product_image']; ?>" class="d-block " alt="logo.png">
                             </div>
                             <?php
                             set_img_product();
@@ -101,19 +91,15 @@ if (isset($_POST['submit'])) {
 
                         </div>
                         <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon  border-secondary  " aria-hidden="true"></span>
+                            <span style="border-radius: 50%;" class="carousel-control-prev-icon border-secondary" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span style="border-radius: 50%;" class="carousel-control-next-icon border-secondary " aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                 </div>
-
-
-
-
                 <div class="info">
                     <a href="../resources/cart.php?add=<?php echo $row['product_id']; ?>">
                         <button class="info-buy">
@@ -216,12 +202,32 @@ if (isset($_POST['submit'])) {
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-        <div class="comment">
+        <div class="comment" id="comment">
             <?php
+            $per_page = 5;
+
+            if (isset($_GET['page'])) {
+
+                $page = $_GET['page'];
+
+            } else {
+                $page = "";
+            }
+
+            if ($page == "" || $page == 1) {
+                $page_1 = 0;
+            } else {
+                $page_1 = ($page * $per_page) - $per_page;
+            }
+
+            $cmt_query_count = "SELECT * FROM comments";
+            $find_count = mysqli_query($connection, $cmt_query_count);
+            $count = mysqli_num_rows($find_count);
+            $count = ceil($count / $per_page);
+
 
             $product_id = $_GET['id'];
-
-            $query = "SELECT * FROM comments WHERE comment_pro_id = $product_id ORDER BY comment_id DESC";
+            $query = "SELECT * FROM comments WHERE comment_pro_id = $product_id ORDER BY comment_id DESC LIMIT $page_1 ,$per_page";
             $result = mysqli_query($connection, $query);
 
             if (mysqli_num_rows($result) > 0) {
@@ -262,7 +268,7 @@ if (isset($_POST['submit'])) {
                                                     <div class="form-group">
                                                         <textarea class="form-control" name="comment_content" rows="3"></textarea>
                                                     </div>
-                                                    
+
                                                     </br>
                                                     <div class="form-group">
                                                         <input class="form-control" name="replyName" placeholder="Nhập họ và tên">
@@ -308,11 +314,36 @@ if (isset($_POST['submit'])) {
                 echo "Chưa có bình luận nào cho sản phẩm này.";
             }
             ?>
+            <div class="pages">
+                <div class="select-device__pagination">
+                    <ul class="pagination pagination-space">
+                        <li class="pagination-item"><a class="pagination-link"><i class="bi bi-caret-left-fill"></i></a></li>
+
+                        <?php
+                        for ($i = 1; $i <= $count; $i++) {
+
+                            if ($i == $page) {
+                                echo " <li class='pagination-item'><a class='pagination-link active-link' id='page' href='../public/details.php?id={$_GET['id']}&page={$i}'>{$i}</a></li>";
+                            } else {
+                                echo " <li class='pagination-item'><a class='pagination-link' id='page' href='../public/details.php?id={$_GET['id']}&page={$i}'>{$i}</a></li>";
+                            }
+                        }
+
+                        ?>
+
+                        <li class="pagination-item"><a class="pagination-link"><i class="bi bi-caret-right-fill"></i></a></li>
+
+
+
+                    </ul>
+                </div>
+            </div>
         </div>
 
 </div>
 
 <?php endwhile; ?>
+
 
 <footer>
     <div class="footer">

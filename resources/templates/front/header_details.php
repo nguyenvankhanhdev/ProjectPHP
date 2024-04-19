@@ -19,7 +19,7 @@
                 <div class="container">
                     <div class="flex logo-inner">
                         <div class="logo-item flex-align-center">
-                            <a href="./index.html"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
+                            <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
 
                         </div>
                         <div class="g-search">
@@ -35,17 +35,17 @@
                         </div>
                         <div class="home-page">
                             <div class="home-page-inner">
-                                <a href="./index.html" target="_blank"><i class="bi bi-house-door-fill"></i> Trang
+                                <a href="./index.php" target="_blank"><i class="bi bi-house-door-fill"></i> Trang
                                     chủ</a>
                             </div>
                         </div>
                         <div class="market">
-                            <a href="./cart.html" target="_blank"><i class="bi bi-cart"></i></a>
+                            <a href="./checkout.php" target="_blank"><i class="bi bi-cart"></i></a>
                         </div>
                         <div class="register">
                             <div class="register-inner">
                                 <div class="register-login">
-                                    <a href="./log-in.html" target="_blank"> Đăng kí / Đăng nhập</a>
+                                    <a href="./log-in.php" target="_blank"> Đăng kí / Đăng nhập</a>
                                 </div>
                             </div>
                         </div>

@@ -28,12 +28,33 @@ document.addEventListener('DOMContentLoaded', function () {
   let apiData;
   let selectedBrands = [];
   let selectedPrices = [];
+  let currentPage = 0;
+  const productsPerPage = 6; 
+  const productsDiv = document.getElementById('products');
+
+  function fetchNextPage() {
+    if (hasNextPage()) {
+      const nextPageStartIndex = currentPage * productsPerPage;
+      const nextPageEndIndex = nextPageStartIndex + productsPerPage;
+      const nextPageData = apiData.slice(nextPageStartIndex, nextPageEndIndex);
+      currentPage++;
+      displayProducts(nextPageData);
+    } else {
+      console.log('No more products to load');
+    }
+  }
+  function hasNextPage() {
+    return (currentPage * productsPerPage) < apiData.length;
+  }
   const checkboxAll_Brand = document.getElementById('checkbox_all');
   checkboxAll_Brand.checked = true;
   const checkboxAll_Price = document.getElementById('checkbox_all_price');
   checkboxAll_Price.checked = true;
 
-  fetch('http://localhost:8080/Project_php/public/api.php')
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const catId = urlParams.get('cat_id');
+  fetch(`http://localhost:8080/Project_php/public/api.php?cat_id=${catId}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -42,19 +63,18 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(data => {
       apiData = data;
-      displayProducts(apiData);
+      fetchNextPage();
     })
     .catch(error => {
       console.error('There was a problem with your fetch operation:', error);
     });
 
+
   const checkboxesBrand = document.querySelectorAll('.checkInput_brand');
   const checkboxesPrice = document.querySelectorAll('.checkInput_price');
-
   checkboxesBrand.forEach(checkbox => {
     checkbox.addEventListener('change', filterProducts);
   });
-
   checkboxesPrice.forEach(checkbox => {
     checkbox.addEventListener('change', filterProducts);
   });
@@ -78,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
       (selectedBrands.length === 0 || selectedBrands.includes(product.brand_id)) &&
       (selectedPrices.length === 0 || selectedPrices.includes(getPriceCategory(product.product_price)))
     );
-
+    currentPage = 0;
     displayProducts(filteredData);
   }
 
@@ -124,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>
                 <div class="cart-memory">
-                    <button class="cart-memory-item-active">256GB</button>
-                    <button class="cart-memory-item">512GB</button>
+                    <button class="cart-memory-item-active">Ram ${product.Ram}GB</button>
+                    <button class="cart-memory-item">Memory ${product.Memory}GB</button>
                 </div>
             </div>
             <div class="cart-btn">
@@ -135,9 +155,13 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         </div>
         `;
-      productsDiv.insertAdjacentHTML('afterbegin', html);
+      productsDiv.insertAdjacentHTML('beforeend', html);
     });
   }
+  document.getElementById('btn-loadmore').addEventListener('click', function () {
+    fetchNextPage();
+  });
+
 });
 
 
@@ -156,6 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
     contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+
 
 
 function detailsPrice() {

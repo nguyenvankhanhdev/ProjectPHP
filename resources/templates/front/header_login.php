@@ -18,7 +18,7 @@
                     <div class="container">
                         <div class="flex logo-inner">
                             <div class="logo-item flex-align-center">
-                                <a href="./index.html"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
+                                <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
 
                             </div>
                             <div class="g-search">
@@ -35,14 +35,14 @@
                             <div class="home-page">
                                 <div class="home-page-inner">
                                     <div class="home-page-item">
-                                        <a href="./index.html" target="_blank"><i class="bi bi-house-door-fill"></i>
+                                        <a href="./index.php" target="_blank"><i class="bi bi-house-door-fill"></i>
                                             Trang
                                             chủ</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="market">
-                                <a href="./cart.php" target="_blank"><i class="bi bi-cart"></i></a>
+                                <a href="./checkout.php" target="_blank"><i class="bi bi-cart"></i></a>
                             </div>
                             <div class="register">
                                 <div class="register-inner">
