@@ -35,10 +35,10 @@ function cart()
 {
     $total = 0;
     $item_quantity = 0;
-    $item_name=1;
-    $item_number=1;
-    $amount =1;
-    $quantity=1;
+    $item_name = 1;
+    $item_number = 1;
+    $amount = 1;
+    $quantity = 1;
     foreach ($_SESSION as $name => $value) {
         if ($value > 0) {
             if (substr($name, 0, 8) == "product_") {
@@ -53,12 +53,13 @@ function cart()
                     $item_quantity += $value;
                     $product = <<<DELIMETER
                     <div class="cart-product">
+                    <div class="check-cart"><input type="checkbox" value=check-item></div>
                     <div class="cart-img">
                     <img src="../assets/img/{$row['product_image']}" alt="">
                 </div>
                 <div class="cart-info">
-                    <a href="./details.php" target="_blank" class="re-link">{$row['product_title']}</a> 
-                    <a href="cart.php?delete={$row['product_id']}"><i class="bi bi-trash"></i></a> 
+                    <a href="./details.php?id={$row['product_id']}" target="_blank" class="re-link">{$row['product_title']}</a> 
+                    <a href="../resources/cart.php?delete={$row['product_id']}"><i class="bi bi-trash"></i></a> 
                     <div class="cart-item-title">
                         <p class="sale-price">{$product_price_formatted}đ</p>
                         <strike class="normal-price">34.900.000đ</strike>
@@ -72,6 +73,7 @@ function cart()
                     </div>
                     <h3 style="color: red; font-weight: 500"><?php echo display_message(); ?></h3>
                 </div>
+                <input type="hidden" name="id_item" value="{$row['product_id']}"> 
                 <input type="hidden" name="item_name_{$item_name}" value="{$row['product_title']}"> 
                 <input type="hidden" name="item_number_{$item_number}" value="{$row['product_id']}"> 
                 <input type="hidden" name="amount_{$amount}" value="{$row['product_price']}">
@@ -81,7 +83,7 @@ function cart()
                     echo $product;
                     $item_name++;
                     $item_number++;
-                    $amount ++;
+                    $amount++;
                     $quantity++;
                 }
                 $_SESSION['item_total'] = $total += $sub;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../assets/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/categories.css">
+    <link rel="stylesheet" href="../assets/search.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="../assets/font.css">
@@ -21,9 +21,6 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <header>
         <div class="header ">
             <div class="logo ">
@@ -32,14 +29,17 @@
                         <div class="logo-item flex-align-center">
                             <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
                         </div>
+
                         <div class="g-search">
-                            <form action="">
+                            <form action="" method="post">
                                 <div class="input-box">
-                                    <input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện.... cần tìm">
-                                    <button type="submit" class="input-box-search">
+                                    <input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện.... cần tìm" name="s-title">
+                                    <button type="submit" class="input-box-search" name="search">
                                         <i class="bi bi-search"></i>
                                     </button>
+
                                 </div>
+
                             </form>
                         </div>
                         <div class="home-page">
@@ -86,54 +86,12 @@
                 <div class=" row">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="./index.php" target="_blank">Trang chủ</a></li>
-                        <li class="breadcrumb-item"><a href=""><?php echo $row_cate['cat_title']; ?></a></li>
+                        <li class="breadcrumb-item"><a href="./search.php" target="_blank">Tìm kiếm</a></li>
+
                     </ol>
                 </div>
-                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
-                    style="margin-bottom: 24px;">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                            aria-label="Slide 5"></button>
-                    </div>
-                    <div class="carousel-inner "
-                        style=" box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);">
-                        <div class="carousel-item active">
-                            <video autoplay muted height="100%" controls="controls" src="../assets/img/samsung.mp4"
-                                class="d-block w-100"></video>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-1.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-2.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-3.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-4.png" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div> -->
-                <div class="section-tabs">
+                
+                <!-- <div class="section-tabs">
                     <div class="card">
                         <div class="card-body">
                             <div class="chapter-tabs">
@@ -176,13 +134,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 
         <section>
             <div class="container">
-                <div class="section-hot">
+                <!-- <div class="section-hot">
                     <div class="section-title">Khuyến Mãi Hot</div>
                     <div class="hot-promotion-inner">
                         <div class="promotion-main">
@@ -253,14 +211,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <section>
             <div class="slider">
                 <div class="container">
                     <div class="row">
-                        <div class="col-3 p-0 p-r-30 filter fixed-sidebar">
+                        <!-- <div class="col-3 p-0 p-r-30 filter fixed-sidebar">
                             <div class="cdt-filter">
                                 <div class="cdt-filter_block">
                                     <div class="cdt-filter_title">
@@ -337,10 +295,12 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="col-9 p-0">
-                            <div class="cart" id="products">
-
+                        </div> -->
+                        <div class="col-12 p-0">
+                            <div class="cart" id="search">
+                                <?php
+                                search();
+                                ?>
                             </div>
                             <div class="cart-loadmore" align="center">
                                 <button class="btn btn-secondary" id="btn-loadmore">Xem Thêm</button>
@@ -488,6 +448,8 @@
 
 <script src="../public/js.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 
 </html>

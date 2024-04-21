@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let selectedBrands = [];
   let selectedPrices = [];
   let currentPage = 0;
-  const productsPerPage = 6; 
+  const productsPerPage = 6;
   const productsDiv = document.getElementById('products');
 
   function fetchNextPage() {
@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const nextPageData = apiData.slice(nextPageStartIndex, nextPageEndIndex);
       currentPage++;
       displayProducts(nextPageData);
-    } else {
-      console.log('No more products to load');
     }
   }
+
   function hasNextPage() {
     return (currentPage * productsPerPage) < apiData.length;
   }
@@ -54,7 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const catId = urlParams.get('cat_id');
-  fetch(`http://localhost:8080/Project_php/public/api.php?cat_id=${catId}`)
+  const brandId = urlParams.get('brand_id');
+
+  let apiUrl = `http://localhost:8080/Project_php/public/api.php?cat_id=${catId}`;
+  if (brandId) {
+    apiUrl += `&brand_id=${brandId}`;
+  }
+  fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -98,10 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
       (selectedBrands.length === 0 || selectedBrands.includes(product.brand_id)) &&
       (selectedPrices.length === 0 || selectedPrices.includes(getPriceCategory(product.product_price)))
     );
+
+    // Xóa bỏ sản phẩm hiện tại trước khi hiển thị sản phẩm lọc mới
+    productsDiv.innerHTML = '';
+
     currentPage = 0;
     displayProducts(filteredData);
   }
-
   function getPriceCategory(price) {
 
     if (price < 2000000) {
@@ -110,13 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
       return 3;
     } else if (price > 4000000 && price < 7000000) {
       return 4;
-    } else {
+    } else if (price >= 7000000 && price < 13000000) {
       return 5;
+    } else {
+      return 6;
     }
   }
   function displayProducts(data) {
-    const productsDiv = document.getElementById('products');
-    productsDiv.innerHTML = '';
+    // productsDiv.innerHTML = '';
     data.forEach(product => {
       const html = `
         <div class="cart-item">
@@ -180,10 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
     contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
-
-
-
-
 function detailsPrice() {
   const priceDetailsElement = document.querySelector(".price_details");
   const strikeText = priceDetailsElement.querySelector("strike").textContent;

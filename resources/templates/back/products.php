@@ -13,6 +13,7 @@
                     <th>Image</th>
                     <th>Category</th>
                     <th>Brand</th>
+                    <th>Quantity</th>
                     <th>Price</th>
                     <th>Display</th>
                     <th>Chip</th>
