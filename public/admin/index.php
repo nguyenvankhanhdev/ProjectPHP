@@ -7,15 +7,10 @@ D
 ?>
 <div id="page-wrapper">
   <div class="container-fluid">
-    <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-
-
       </div>
     </div>
-    <!-- /.row -->
-
     <?php
     if ($_SERVER['REQUEST_URI'] == "/Project_php/public/admin/" || $_SERVER['REQUEST_URI'] == "/Project_php/public/admin/index.php") {
       include(TEMPLATE_BACK . "/admin_content.php");

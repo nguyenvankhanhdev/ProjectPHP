@@ -12,8 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/search.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <link rel="stylesheet" href="../assets/font.css">
     <link rel="stylesheet" href="../assets/icon-fptshop.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -29,25 +28,28 @@
                         <div class="logo-item flex-align-center">
                             <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
                         </div>
-
                         <div class="g-search">
-                            <form action="" method="post">
+                            <form action="../public/search.php" method="post">
                                 <div class="input-box">
                                     <input type="text" placeholder="Nhập tên điện thoại, máy tính, phụ kiện.... cần tìm" name="s-title">
-                                    <button type="submit" class="input-box-search" name="search">
+                                    <button type="submit" class="input-box-search" name="search-s">
                                         <i class="bi bi-search"></i>
                                     </button>
-
                                 </div>
-
                             </form>
                         </div>
                         <div class="home-page">
                             <div class="home-page-inner">
                                 <div class="home-page-item">
-                                    <a href="./index.php" target="_blank"><i class="bi bi-house-door-fill"></i>
-                                        Trang
-                                        chủ</a>
+                                    <?php
+                                    if (isset($_SESSION['id'])) {
+                                        echo "  <a href='./admin/index.php' target='_blank'><i class='bi bi-house-door-fill'></i>Admin</a>";
+                                    } else {
+                                        echo '';
+                                    }
+
+                                    ?>
+
                                 </div>
                             </div>
                         </div>
@@ -57,7 +59,15 @@
                         <div class="register">
                             <div class="register-inner">
                                 <div class="register-login">
-                                    <a href="./log-in.php" target="_blank"> Đăng kí / Đăng nhập</a>
+                                    <?php
+
+                                    if (isset($_SESSION['id'])) {
+                                        echo "<h5>Xin chào, {$_SESSION['username']} </h5>";
+                                    } else {
+                                        echo '<a href="./log-in.php" target="_blank"> Đăng kí / Đăng nhập</a>';
+                                    }
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -87,219 +97,64 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="./index.php" target="_blank">Trang chủ</a></li>
                         <li class="breadcrumb-item"><a href="./search.php" target="_blank">Tìm kiếm</a></li>
-
                     </ol>
                 </div>
-                
-                <!-- <div class="section-tabs">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="chapter-tabs">
-                                <div class="chapter-title">Sản Phẩm SamSung </div>
-                                <div class="chapter-list">
-                                    <div class="chapter active">
-                                        <a class="chapter-img" href="">
-                                            <i class="icon-Combined-Shape"></i>
-                                        </a>
-                                        <div class="chapter-lable push">Sản phẩm nổi bật</div>
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href=""><i class="ic-phone-fold"></i></a>
-                                        <div class="chapter-label">Điện thoại</div>
-
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href=""><i class="ic-tablet-2"></i></a>
-                                        <div class="chapter-label">Máy tính bảng</div>
-
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href=""><i class="ic-galaxy-watch"></i></a>
-                                        <div class="chapter-label">Đồng hồ thông minh</div>
-
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href="">
-                                            <i class="ic-galaxy-buds"></i>
-                                        </a>
-                                        <div class="chapter-label">Tai nghe</div>
-
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href=""><i class="ic-apple-cable"></i></a>
-                                        <div class="chapter-label">Phụ kiện chính hãng</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <!-- <div class="section-hot">
-                    <div class="section-title">Khuyến Mãi Hot</div>
-                    <div class="hot-promotion-inner">
-                        <div class="promotion-main">
-                            <a href="">
-                                <img src="../assets/img/638110459464426127_Frame 47642.png" alt="">
-                                <div class="promotion-text">
-                                    <div class="hot-promotion-title"> Mua ngay Galaxy S23 Series nhận đặc quyền đến 10
-                                        triệu ++ </div>
-                                    <div class="hot-promotion-content">
-                                        <p>Quà độc quyền bảo hành 2 năm + trả góp 0% đến 24 tháng</p>
-                                    </div>
-                                    <div class="buy-now">Mua Ngay</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="promotion-mini">
-                            <div class="promotion-mini-item mb-4 ">
-                                <a href="">
-                                    <img src="../assets/img/638110453361436795_s22.png" alt="">
-                                    <div class="mini-promotion-text">
-                                        <div class="mini-product-title">
-                                            Độc quyền Galaxy S22 tím Bora giảm ngay 6.5 triệu</div>
-                                        <div class="mini-product-content">
-                                            <p>Giá chỉ 12.490.000đ + Buds2 xám giá chỉ 990.000đ</p>
-                                        </div>
-                                    </div>
-                                    <div class="buy-now">Mua Ngay</div>
-                                </a>
-                            </div>
-                            <div class="promotion-mini-item mb-4 ">
-                                <a href="">
-                                    <img src="../assets/img/638110649652773958_bespoke1.png" alt="">
-                                    <div class="mini-promotion-text">
-                                        <div class="mini-product-title">
-                                            Galaxy Z Flip4 Bespoke giá từ 18.990.000đ</div>
-                                        <div class="mini-product-content">
-                                            <p>Giảm ngay 8 triệu khi thu cũ đổi mới <br>Miễn phí 2 năm Samsung </p>
-                                        </div>
-                                    </div>
-                                    <div class="buy-now">Mua Ngay</div>
-                                </a>
-                            </div>
-                            <div class="promotion-mini-item ">
-                                <a href="">
-                                    <img src="../assets/img/638110453361280471_watch5.png" alt="">
-                                    <div class="mini-promotion-text">
-                                        <div class="mini-product-title">
-                                            Galaxy Watch Series</div>
-                                        <div class="mini-product-content">
-                                            <p>Giảm đến 3 triệu + trả góp</p>
-                                        </div>
-                                    </div>
-                                    <div class="buy-now">Mua Ngay</div>
-                                </a>
-                            </div>
-                            <div class="promotion-mini-item">
-                                <a href="">
-                                    <img src="../assets/img/638110453361436795_s22.png" alt="">
-                                    <div class="mini-promotion-text">
-                                        <div class="mini-product-title">
-                                            Galaxy Tab S6 Lite 2022</div>
-                                        <div class="mini-product-content">
-                                            <p>Giảm ngay 3.000.00đ + Mua kèm buds2 xám giá chỉ 990.000đ</p>
-                                        </div>
-                                    </div>
-                                    <div class="buy-now">Mua Ngay</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </section>
         <section>
             <div class="slider">
                 <div class="container">
                     <div class="row">
-                        <!-- <div class="col-3 p-0 p-r-30 filter fixed-sidebar">
-                            <div class="cdt-filter">
-                                <div class="cdt-filter_block">
-                                    <div class="cdt-filter_title">
-                                        Hãng sản xuất
-                                    </div>
-                                    <div class="cdt-filter_checklist filterBrand">
-                                        <form class="checkbox" id="checkboxForm">
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" change="" class="checkInput_brand" id="checkbox_all" data-value="all">
-                                                <label for="">Tất cả</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_apple" data-value="3">
-                                                <label for="">Apple (iPhone)</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_samsung" data-value="1">
-                                                <label for="">Sam Sung</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_xiaomi" data-value="xiaomi">
-                                                <label for="">Xiaomi</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_oppo" data-value="oppo">
-                                                <label for="">Oppo</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_vivo" data-value="vivo">
-                                                <label for="">Vivo</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_realme" data-value="realme">
-                                                <label for="">Realme</label>
-                                            </p>
-                                        </form>
-
-                                    </div>
-                                </div>
-                                <div class="cdt-filter_block">
-                                    <div class="cdt-filter_title">
-                                        Mức giá
-                                    </div>
-                                    <div class="cdt-filter_checklist filterBrand">
-                                        <div class="checkbox">
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price active " id="checkbox_all_price" data-value="all" checked>
-                                                <label for="">Tất cả</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price" data-value="2">
-                                                <label for="">Dưới 2 triệu</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price" data-value="3">
-                                                <label for="">Từ 2 đến 4 triệu</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price" data-value="4">
-                                                <label for="">Từ 4 đến 7</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price" data-value="5">
-                                                <label for="">Từ 7 đến 13</label>
-                                            </p>
-                                            <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_price" data-value="6">
-                                                <label for="">Trên 13</label>
-                                            </p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> -->
                         <div class="col-12 p-0">
                             <div class="cart" id="search">
                                 <?php
-                                search();
+                                if (isset($_POST['search-s'])) {
+                                    $title = $_POST['s-title'];
+                                    $query = query("SELECT * FROM products WHERE product_title LIKE '" . "%" . escape_string($title) . "%" . "'");
+                                    confirm($query);
+                                    while ($row = fetch_array($query)) {
+                                        $price_sale = number_format($row['product_price'] + 2000000,0,".",".");
+                                        $price_format= number_format($row['product_price'],0,".",".");
+                                        $search = <<<DELIMETER
+                                        <div class="cart-item">
+                                        <div class="cart-product-img">
+                                            <a href="./details.php?id={$row['product_id']}" target="_blank">
+                                                <img class="cart-img" src="../assets/img/{$row['product_image']}" alt="">
+                                            </a>
+                                            <div class="cart-product-label">
+                                                <div class="badge-warning">Trả góp 0%</div>
+                                                <div class="badge-primary">Giảm 2.000.000đ</div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-product">
+                                            <h3><a href="">{$row['product_title']}</a></h3>
+                                            <div class="circle-color">
+                                                <div class="circle-item pink" style="background:#2D2926"></div>
+                                                <div class="circle-item pink" style="background:#4F5A61"></div>
+                                                <div class="circle-item pink" style="background:#D5CDC1"></div>
+                                                <div class="circle-item pink" style="background:#74424F"></div>
+                                            </div>
+                                            <div class="cart-price">
+                                                <div class="price-sale">{$price_format} đ</div>
+                                                <div class="price-strike">
+                                                    <strike>{$price_sale}đ</strike>
+                                                </div>
+                                            </div>
+                                            <div class="cart-memory">
+                                                <button class="cart-memory-item-active">Ram {$row['Ram']}GB</button>
+                                                <button class="cart-memory-item">Memory {$row['Memory']}GB</button>
+                                            </div>
+                                        </div>
+                                        <div class="cart-btn">
+                                            <div class="btn-buynow">
+                                                <a href="../resources/cart.php?add={$row['product_id']}">Mua ngay</a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        DELIMETER;
+                                        echo $search;
+                                    }
+                                }
                                 ?>
                             </div>
                             <div class="cart-loadmore" align="center">
@@ -446,7 +301,6 @@
     </footer>
 </body>
 
-<script src="../public/js.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

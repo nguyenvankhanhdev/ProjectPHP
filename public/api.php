@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
-$dbHost = 'localhost';
-$dbName = 'e_com';
+$dbHost = 'localhost:33071';
+$dbName = 'ecom_db';
 $dbUser = 'root';
 $dbPass = '';
 try {

@@ -22,6 +22,13 @@ header {
     margin-right: auto;
 }
 
+.count-cart{
+    padding: 2px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50%;
+
+}
 .mb-4 {
     margin-bottom: 4px;
 }
@@ -211,7 +218,7 @@ header {
 
 .register-login a {
     background-color: #ccc;
-    border-radius: 0 10px 10px 0;
+
     text-decoration: none;
     color: #000;
 }

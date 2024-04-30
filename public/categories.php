@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +21,6 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <header>
         <div class="header ">
@@ -89,55 +87,11 @@
                         <li class="breadcrumb-item"><a href=""><?php echo $row_cate['cat_title']; ?></a></li>
                     </ol>
                 </div>
-                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
-                    style="margin-bottom: 24px;">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                            aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                            aria-label="Slide 5"></button>
-                    </div>
-                    <div class="carousel-inner "
-                        style=" box-shadow: 0 1px 2px 0 rgb(60 64 67 / 10%), 0 2px 6px 2px rgb(60 64 67 / 15%);">
-                        <div class="carousel-item active">
-                            <video autoplay muted height="100%" controls="controls" src="../assets/img/samsung.mp4"
-                                class="d-block w-100"></video>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-1.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-2.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-3.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/img/slider-4.png" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div> -->
                 <div class="section-tabs">
                     <div class="card">
                         <div class="card-body">
                             <div class="chapter-tabs">
-                                <div class="chapter-title">Sản Phẩm SamSung </div>
+                                <div class="chapter-title">Sản Phẩm</div>
                                 <div class="chapter-list">
                                     <div class="chapter active">
                                         <a class="chapter-img" href="">
@@ -281,20 +235,24 @@
                                                 <label for="">Sam Sung</label>
                                             </p>
                                             <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_xiaomi" data-value="xiaomi">
+                                                <input type="checkbox" class="checkInput_brand" id="checkbox_xiaomi" data-value="2">
                                                 <label for="">Xiaomi</label>
                                             </p>
                                             <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_oppo" data-value="oppo">
+                                                <input type="checkbox" class="checkInput_brand" id="checkbox_oppo" data-value="15">
                                                 <label for="">Oppo</label>
                                             </p>
                                             <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_vivo" data-value="vivo">
+                                                <input type="checkbox" class="checkInput_brand" id="checkbox_vivo" data-value="26">
                                                 <label for="">Vivo</label>
                                             </p>
                                             <p class="checkItem" title="">
-                                                <input type="checkbox" class="checkInput_brand" id="checkbox_realme" data-value="realme">
+                                                <input type="checkbox" class="checkInput_brand" id="checkbox_realme" data-value="4">
                                                 <label for="">Realme</label>
+                                            </p>
+                                            <p class="checkItem" title="">
+                                                <input type="checkbox" class="checkInput_brand" id="checkbox_realme" data-value="5">
+                                                <label for="">Nokia</label>
                                             </p>
                                         </form>
 
@@ -330,13 +288,10 @@
                                                 <input type="checkbox" class="checkInput_price" data-value="6">
                                                 <label for="">Trên 13</label>
                                             </p>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-9 p-0">
                             <div class="cart" id="products">
@@ -486,7 +441,7 @@
     </footer>
 </body>
 
-<script src="../public/js.js"></script>
+<script src="../assets/js/js.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 

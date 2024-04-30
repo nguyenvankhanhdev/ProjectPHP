@@ -31,155 +31,10 @@
                 <div class="prd-sale_product">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="swiper-product">
-                                    <div class="swiper-img">
-                                        <img src="../assets/img/638107858632184994_iphone-14-pro-dd-1.webp" alt="">
-                                        <div class="cart-product-label">
-                                            <div class="badge-warning">Trả góp 0%</div>
-                                            <div class="badge-primary">Giảm 5.000.000đ</div>
-                                        </div>
-                                    </div>
+                            <?php
 
-                                    <div class="swiper-product_info">
-                                        <div class="item-name ml-4">iPhone 14 Pro 128GB</div>
-                                        <h3>
-                                            <a href=""></a>
-                                        </h3>
-                                        <div class="price">
-                                            <div class="price-sale">26.990.000đ </div>
-                                            <div class="price-strike">
-                                                <strike>31.990.000đ</strike>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-product_config">
-                                        <div class="swiper-product_img-promo">
-                                            <div class="logo-tpbank">
-                                                <img src="../assets/img/tpbank-icon.png" alt="tpbank-icon">
-                                            </div>
-                                            <div class="logo-kenovo">
-                                                <img src="../assets/img/kenovo.png" alt="kenovo-icon">
-                                            </div>
-                                            <div class="swiper-product_text">
-                                                Giảm ngay 5% tối đa 500.000Đ qua Kredivo
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="swiper-product">
-                                    <div class="swiper-img">
-                                        <img src="../assets/img/638110453361436795_s22.png" alt="">
-                                        <div class="cart-product-label">
-                                            <div class="badge-warning">Trả góp 0%</div>
-                                            <div class="badge-primary">Giảm 5.000.000đ</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-product_info">
-                                        <div class="item-name ml-4">Samsung Galaxy S23 Ultra 5G</div>
-                                        <h3>
-                                            <a href=""></a>
-                                        </h3>
-                                        <div class="price">
-                                            <div class="price-sale">26.990.000đ </div>
-                                            <div class="price-strike">
-                                                <strike>31.990.000đ</strike>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-product_config">
-                                        <div class="swiper-product_img-promo">
-                                            <div class="logo-tpbank">
-                                                <img src="./assets/img/tpbank-icon.png" alt="tpbank-icon">
-                                            </div>
-                                            <div class="logo-kenovo">
-                                                <img src="./assets/img/kenovo.png" alt="kenovo-icon">
-                                            </div>
-                                            <div class="swiper-product_text">
-                                                Giảm ngay 5% tối đa 500.000Đ qua Kredivo
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="swiper-product">
-                                    <div class="swiper-img">
-                                        <img src="./assets/img/oppo-reno8-4g-dd.webp" alt="">
-                                        <div class="cart-product-label">
-                                            <div class="badge-warning">Trả góp 0%</div>
-                                            <div class="badge-primary">Giảm 5.000.000đ</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-product_info">
-                                        <div class="item-name ml-4">OPPO Reno8 4G 8G - 256GB</div>
-                                        <h3>
-                                            <a href=""></a>
-                                        </h3>
-                                        <div class="price">
-                                            <div class="price-sale">26.990.000đ </div>
-                                            <div class="price-strike">
-                                                <strike>31.990.000đ</strike>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-product_config">
-                                        <div class="swiper-product_img-promo">
-                                            <div class="logo-tpbank">
-                                                <img src="./assets/img/tpbank-icon.png" alt="tpbank-icon">
-                                            </div>
-                                            <div class="logo-kenovo">
-                                                <img src="./assets/img/kenovo.png" alt="kenovo-icon">
-                                            </div>
-                                            <div class="swiper-product_text">
-                                                Giảm ngay 600.000đ khi mở thẻ TPBANK EVO
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide nth">
-                                <div class="swiper-product">
-                                    <div class="swiper-img">
-                                        <img src="./assets/img/asus-tuf-gaming-fx506lh-den-2022-dd.webp" alt="">
-                                        <div class="cart-product-label">
-                                            <div class="badge-warning">Trả góp 0%</div>
-                                            <div class="badge-primary">Giảm 5.000.000đ</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="swiper-product_info">
-                                        <div class="item-name ml-4">Asus TUF Gaming FX506LHB-HN188W i5 10300H
-                                        </div>
-                                        <h3>
-                                            <a href=""></a>
-                                        </h3>
-                                        <div class="price">
-                                            <div class="price-sale">26.990.000đ </div>
-                                            <div class="price-strike">
-                                                <strike>31.990.000đ</strike>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-product_config">
-                                        <div class="swiper-product_img-promo">
-                                            <div class="logo-tpbank">
-                                                <img src="./assets/img/tpbank-icon.png" alt="tpbank-icon">
-                                            </div>
-                                            <div class="logo-kenovo">
-                                                <img src="./assets/img/kenovo.png" alt="kenovo-icon">
-                                            </div>
-                                            <div class="swiper-product_text">
-                                                Giảm ngay 600.000đ khi mở thẻ TPBANK EVO
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            get_Swiper();
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -195,13 +50,12 @@
                     <img src="../assets/img/banner-laptop.webp" alt="">
                 </div>
             </div>
-        </div>
+        </div>  
     </div>
 </section>
 <section>
     <div class="container">
         <div class="cartt">
-            
             <?php
             getProduct();
             ?>

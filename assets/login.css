@@ -307,7 +307,7 @@ span {
 a {
     color: #333;
     font-size: 14px;
-    text-decoration: none;
+    text-decoration: none !important;
     margin: 15px 0;
 }
 

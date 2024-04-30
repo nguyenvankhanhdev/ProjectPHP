@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../assets/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 
 </head>
 
@@ -19,7 +21,6 @@
                         <div class="flex logo-inner">
                             <div class="logo-item flex-align-center">
                                 <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
-
                             </div>
                             <div class="g-search">
                                 <form action="">
