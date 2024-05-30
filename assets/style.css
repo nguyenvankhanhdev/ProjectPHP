@@ -1016,6 +1016,15 @@ header {
     display: inline-block;
     max-height: 115px;
 }
+.circle_wish_delete{
+    position: absolute;
+    top: 8%;
+    left: 100%;
+    width: 10px;
+}
+.circle_wish_delete path:hover{
+    color: red;
+}
 
 @media only screen and (max-width: 992px){
     .col-mb3 {

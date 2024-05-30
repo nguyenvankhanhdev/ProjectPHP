@@ -91,6 +91,9 @@ function getProduct()
                 <div class="btn-buynow">
                     <a href="../resources/cart.php?add={$row['product_id']}">Mua ngay</a>
                 </div>
+                <div class="btn-buynow">
+                    <a href="./index.php?wishlists={$row['product_id']}">Yêu thích</a>
+                </div>
             </div>
         </div>
         DELIMITER;
@@ -204,10 +207,8 @@ function login_user()
         $password = escape_string($_POST['password_login']);
         $query = query("SELECT * FROM users WHERE username ='{$username}'");
         confirm($query);
-
         if (mysqli_num_rows($query) == 0) {
-
-            ?>
+?>
             <script>
                 document.querySelector('[data-validate="Enter username"] .error-message').textContent = 'Tên đăng nhập không tồn tại';
             </script>
@@ -215,18 +216,20 @@ function login_user()
         } else {
             $row = fetch_array($query);
             $hashed_password = $row['password'];
-
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['id'] = $row['user_id'];
-
                 $_SESSION['username'] = $username;
-                redirect("admin");
+                if (check_role() == "admin") {
+                    redirect("admin");
+                } else {
+                    redirect('../public/');
+                }
             } else {
             ?>
                 <script>
                     document.querySelector('[data-validate="Enter password"] .error-message').textContent = 'Sai Password';
                 </script>
-            <?php
+<?php
 
             }
         }
@@ -240,14 +243,12 @@ function register_user()
         $email = escape_string($_POST['email_regis']);
         $token = bin2hex(openssl_random_pseudo_bytes(50));
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = query("INSERT INTO users(username, email, password,token)
-        VALUES('{$username}','{$email}','{$hashed_password}','{$token}')");
+        $query = query("INSERT INTO users(username, email, password,token,role)
+        VALUES('{$username}','{$email}','{$hashed_password}','{$token}','user')");
         confirm($query);
         redirect('../public/log-in.php');
     }
 }
-
-
 function get_province()
 {
     $sql = "SELECT * FROM province";
@@ -256,7 +257,6 @@ function get_province()
         echo " <option value='{$row['province_id']}'> {$row['name']} </option>";
     }
 }
-
 function get_Swiper()
 {
     $query = query("SELECT * FROM `products` LIMIT 9, 4");
@@ -308,7 +308,6 @@ function get_Swiper()
         echo $product;
     }
 }
-
 function checkout_cart()
 {
     $pdo = new PDO('mysql:host=localhost:33071;dbname=ecom_db', 'root', '');
@@ -366,7 +365,6 @@ function checkout_cart()
             $stmt_update_quantity->execute();
         }
         try {
-
             $pdo->beginTransaction();
             $sql = "INSERT INTO orders (order_amount, quantity, name, phoneNumber, address, order_status, order_date) VALUES (:product_price, :quantity, :name, :phoneNumber, :address, :order_status, :order_date)";
             $statement = $pdo->prepare($sql);
@@ -408,8 +406,85 @@ function checkout_cart()
         }
     }
 }
+function insertWishlists()
+{
+    if (isset($_GET['wishlists'])) {
+        $query = query("INSERT INTO wishlists(wish_user_id, wish_product_id) values({$_SESSION['id']},{$_GET['wishlists']})");
+        confirm($query);
+        redirect("");
+    }
+}
+function check_role()
+{
+    if (isset($_SESSION['id'])) {
+        $query = query("SELECT * FROM users where user_id = {$_SESSION['id']}");
+        confirm($query);
+        $row = fetch_array($query);
+        return $row['role'];
+    }
+}
 
+function count_wishlist()
+{
+    if (isset($_SESSION['id'])) {
+        $query = query("SELECT Count(*) 'count_wist' FROM wishlists where wish_user_id= {$_SESSION['id']}");
+        confirm($query);
+        $row = fetch_array($query);
+        return $row['count_wist'];
+    }
+}
+function delete_wishlists()
+{
+    if (isset($_GET['delete_id'])) {
+        $query = query("DELETE FROM wishlists where wish_id = {$_GET['delete_id']}");
+        confirm($query);
+        redirect("../public/wishlists.php");
+    }
+}
+function get_wishlists()
+{
+    if (isset($_SESSION['id'])) {
+        $query = query("SELECT * FROM wishlists, products where wishlists.wish_product_id = products.product_id and wish_user_id = {$_SESSION['id']}");
+        while ($row = fetch_array($query)) {
+            $formated = number_format($row['product_price'], 0, ",", ".");
+            $wishlists = <<<DELIMETER
+        <tr class="d-flex justify-content-between" style="align-items: center;margin-right: 11px; ">
+            <td style="padding:40px 0; position:relative;">
+                <img src="../assets/img/{$row['product_image']}" style="max-width:110px; ">
+                <a href="./wishlists.php?delete_id={$row['wish_id']}">
+                    <div class="circle_wish_delete" data-id="{$row['wish_id']}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                    </svg>
+                    </div>
+                </a>
+            </td>
+            <td style="font-size:20px">{$row['product_title']}</td>
+            <td style="font-size:20px; font-weight:600" >{$formated} đ</td>
+            <td>
+                <a href="details.php?id={$row['product_id']}" style="font-size: 16px;
+                padding: 10px;
+                color: #fff;
+                width: auto;
+                font-size: 14px;
+                text-transform: capitalize;
+                font-weight: 600;
+                color: #fff;
+                background: #08C;
+                padding: 12px 25px;
+                text-decoration: none;
+                border: none;
+                border-radius: 30px;
+                outline: none;
+                transition: all linear 0.3s;">Xem chi tiết</a>
+            </td>
+        </tr>
 
+        DELIMETER;
+            echo $wishlists;
+        }
+    }
+}
 // -------------------------------- Admin-------------------------------//
 
 function count_products()
@@ -535,7 +610,6 @@ function update_product()
         $pro_price = escape_string($_POST['product_price']);
         $pro_cat_id = escape_string($_POST['product_cat_id']);
         $pro_brand_id = escape_string($_POST['product_brand_id']);
-
         $display = escape_string($_POST['display']);
         $chip = escape_string($_POST['chip']);
         $ram = escape_string($_POST['ram']);
@@ -554,8 +628,6 @@ function update_product()
         }
 
         move_uploaded_file($img_tmp, "../../assets/img/$pro_img");
-
-
         $query = "UPDATE products SET ";
         $query  .= " product_title ='{$pro_title}',";
         $query  .= " product_cat_id ={$pro_cat_id} ,";
@@ -569,9 +641,6 @@ function update_product()
         $query  .= " Ram ='{$ram}',";
         $query  .= " Memory ='{$memory}'";
         $query  .= " WHERE product_id =" . escape_string($_GET['id']) . ' ';
-
-
-
         $send_query = query($query);
         confirm($send_query);
 

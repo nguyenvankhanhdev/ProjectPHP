@@ -58,6 +58,7 @@
         <div class="cartt">
             <?php
             getProduct();
+            insertWishlists();
             ?>
         </div>
     </div>

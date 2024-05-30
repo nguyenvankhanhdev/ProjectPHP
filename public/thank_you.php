@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -181,7 +182,7 @@
                 $statement->execute();
                 $order = $statement->fetchAll(PDO::FETCH_ASSOC);
               }
-              
+
               ?>
               <div class="c-cart__data-user">
                 <div class="c-modal__row info-ship">
@@ -202,10 +203,7 @@
                             <td>Số điện thoại</td>
                             <td class="phone_ship"><?php echo $order_item['phoneNumber'] ?></td>
                           </tr>
-                          <tr>
-                            <td>Email</td>
-                            <td class="mail_ship">Chỉ giao hàng giờ hành chính</td>
-                          </tr>
+                        
                           <tr>
                             <td>Giao hàng đến</td>
                             <td class="addressship_ship"><?php echo $order_item['address'] ?></td>
@@ -272,7 +270,11 @@
                   </div>
                 </div>
               </div>
-              <div class="c-cart__callback text-center p-y-24"><button class="btn btn-xl btn-link" id="btnCompleteOrder">VỀ TRANG CHỦ</button></div>
+              <div class="c-cart__callback text-center p-y-24">
+                <a href="./index.php">
+                  <button class="btn btn-xl btn-link" id="btnCompleteOrder">VỀ TRANG CHỦ</button>
+                </a>
+              </div>
             </div>
           </div>
         </div>

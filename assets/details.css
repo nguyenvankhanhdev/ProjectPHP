@@ -686,7 +686,7 @@ html {
 .media .avatar .avatar-shape{
     border-radius: 50%;
     background: #252525;
-    width: 108px;
+    width: 64px;
     height: 64px;
     margin-right: 12px;
 }.media .avatar .avatar-shape img{

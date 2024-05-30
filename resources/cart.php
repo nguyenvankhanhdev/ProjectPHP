@@ -15,15 +15,8 @@ if (isset($_GET['add'])) {
     if (mysqli_num_rows($result) > 0) {
         $query = "UPDATE carts set quantity = quantity + 1 where user_id = $user_id and product_id = $product_id";
     } else {
-        if (!isset($_SESSION['cart_quantity'])) {
-            $_SESSION['cart_quantity'] = 1;
-        } else {
-            $_SESSION['cart_quantity']++;
-        }
         $query = "INSERT INTO carts (user_id, product_id, quantity) VALUES($user_id, $product_id, 1)";
     }
-
-    
 
 
     $result = mysqli_query($connection, $query);
@@ -35,13 +28,6 @@ if (isset($_GET['delete'])) {
     $delete = $_GET['delete'];
     $query = 'DELETE FROM carts WHERE product_id = ' . $delete . ' ';
     $result = mysqli_query($connection, $query);
-    if (isset($_SESSION['cart_quantity'])) {
-        $_SESSION['cart_quantity']--;
-        if ($_SESSION['cart_quantity'] < 0) {
-            $_SESSION['cart_quantity'] = 0;
-        }
-    }
-
     confirm($result);
     redirect("../public/checkout.php");
 }
@@ -109,7 +95,7 @@ function cart()
         </div>
         <div class="cart-info">
             <a href="./details.php?id={$row['product_id']}" target="_blank" class="re-link">{$row['product_title']}</a> 
-            <a href="../resources/cart.php?delete={$row['product_id']}"><i class="bi bi-trash"></i></a> 
+            <a href="../resources/cart.php?delete={$row['product_id']}" class="product_delete" data-id={$row['product_id']} ><i class="bi bi-trash"></i></a> 
             <div class="cart-item-title">
                 <p class="sale-price">{$product_price_sub}đ</p>
                 <strike class="normal-price">{$price_sale}đ</strike>

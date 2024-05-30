@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateTotal() {
     let totalQuantity = 0;
     let totalPrice = 0;
-
     checkItems.forEach((item) => {
       if (item.checked) {
         const productInfo = item.parentElement.parentElement;
@@ -62,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const productPrice = document.querySelectorAll(".product_price");
 
   plusButtons.forEach((plusButton, index) => {
+    console.log(plusButton, index);
     plusButton.addEventListener("click", function (e) {
       e.preventDefault();
       let value = parseInt(valueElements[index].textContent);
@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
       success: function (response) {
         console.log(response);
         const responseData = JSON.parse(response);
-        
         if (responseData.success) {
           if (quantity === 0) {
             const productToRemove = document.querySelector(
@@ -208,6 +207,16 @@ document.querySelector(".btn-primary").addEventListener("click", function (e) {
   checkout();
 });
 
+document.querySelectorAll(".product_delete").forEach(function(element) {
+  element.addEventListener("click", function(e) {
+      e.preventDefault();
+      var productId = this.getAttribute('data-id');
+      if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+          window.location.href = "?delete=" + productId;
+      }
+  });
+});
+
 /// Hiển thị số lượng sp cart
 
 /// tỉnh thành
@@ -275,3 +284,5 @@ $(document).ready(function () {
     }
   });
 });
+
+

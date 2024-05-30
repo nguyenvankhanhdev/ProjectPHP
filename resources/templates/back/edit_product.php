@@ -117,7 +117,6 @@ if (isset($_GET['id'])) {
                 <input type="file" name="image">
                 <img src="../../assets/img/<?php echo $pro_img; ?>" width="100px" alt="">
             </div>
-
             <div class="form-group">
                 <input type="submit" name="update" class="btn btn-primary btn-lg" value="Update">
             </div>

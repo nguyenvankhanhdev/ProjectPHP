@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectedBrands = [];
   let selectedPrices = [];
   let currentPage = 0;
-  const productsPerPage = 6;
+  const productsPerPage = 9;
   const productsDiv = document.getElementById("products");
 
   function fetchNextPage() {
@@ -45,10 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function hasNextPage() {
     return currentPage * productsPerPage < apiData.length;
   }
+
   const checkboxAll_Brand = document.getElementById("checkbox_all");
-  checkboxAll_Brand.checked = true;
   const checkboxAll_Price = document.getElementById("checkbox_all_price");
-  checkboxAll_Price.checked = true;
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -59,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (brandId) {
     apiUrl += `&brand_id=${brandId}`;
   }
+
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("There was a problem with your fetch operation:", error);
     });
-
   const checkboxesBrand = document.querySelectorAll(".checkInput_brand");
   const checkboxesPrice = document.querySelectorAll(".checkInput_price");
   checkboxesBrand.forEach((checkbox) => {
@@ -82,36 +81,52 @@ document.addEventListener("DOMContentLoaded", function () {
   checkboxesPrice.forEach((checkbox) => {
     checkbox.addEventListener("change", filterProducts);
   });
-
   function filterProducts() {
     if (Array.from(checkboxesBrand).some((checkbox) => checkbox.checked)) {
       checkboxAll_Brand.checked = false;
+    } else {
+      checkboxAll_Brand.checked = true;
     }
+
     if (Array.from(checkboxesPrice).some((checkbox) => checkbox.checked)) {
       checkboxAll_Price.checked = false;
+    } else {
+      checkboxAll_Price.checked = true;
     }
+
     selectedBrands = Array.from(checkboxesBrand)
-      .filter((checkbox) => checkbox.checked)
+      .filter(
+        (checkbox) =>
+          checkbox.checked && checkbox.getAttribute("data-value") !== "all"
+      )
       .map((checkbox) => parseInt(checkbox.getAttribute("data-value")));
 
     selectedPrices = Array.from(checkboxesPrice)
-      .filter((checkbox) => checkbox.checked)
+      .filter(
+        (checkbox) =>
+          checkbox.checked && checkbox.getAttribute("data-value") !== "all"
+      )
       .map((checkbox) => parseInt(checkbox.getAttribute("data-value")));
 
-    const filteredData = apiData.filter(
-      (product) =>
-        (selectedBrands.length === 0 ||
-          selectedBrands.includes(product.brand_id)) &&
-        (selectedPrices.length === 0 ||
-          selectedPrices.includes(getPriceCategory(product.product_price)))
-    );
+    let filteredData = apiData;
 
-    // Xóa bỏ sản phẩm hiện tại trước khi hiển thị sản phẩm lọc mới
+    if (selectedBrands.length > 0) {
+      filteredData = filteredData.filter((product) =>
+        selectedBrands.includes(product.brand_id)
+      );
+    }
+
+    if (selectedPrices.length > 0) {
+      filteredData = filteredData.filter((product) =>
+        selectedPrices.includes(getPriceCategory(product.product_price))
+      );
+    }
     productsDiv.innerHTML = "";
 
     currentPage = 0;
     displayProducts(filteredData);
   }
+
   function getPriceCategory(price) {
     if (price < 2000000) {
       return 2;
@@ -125,8 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return 6;
     }
   }
+
   function displayProducts(data) {
-    // productsDiv.innerHTML = '';
     data.forEach((product) => {
       const discountedPrice = product.product_price + 2000000;
       const html = `
@@ -158,14 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <strike>${discountedPrice.toLocaleString()}đ</strike>
                     </div>
                 </div>
-                <div class="cart-memory">
-                    <button class="cart-memory-item-active">Ram ${
-                      product.Ram
-                    }GB</button>
-                    <button class="cart-memory-item">Memory ${
-                      product.Memory
-                    }GB</button>
-                </div>
             </div>
             <div class="cart-btn">
                 <div class="btn-buynow">
@@ -173,26 +180,53 @@ document.addEventListener("DOMContentLoaded", function () {
                       product.product_id
                     }">Mua ngay</a>
                 </div>
+                <div class="btn-buynow">
+                    <a href="../resources/cart.php?add=${
+                      product.product_id
+                    }">Yêu Thích</a>
+                </div>
             </div>
         </div>
         `;
       productsDiv.insertAdjacentHTML("beforeend", html);
     });
   }
+
   document
     .getElementById("btn-loadmore")
     .addEventListener("click", function () {
       fetchNextPage();
     });
+  checkboxAll_Brand.addEventListener("change", function () {
+    if (this.checked) {
+      checkboxesBrand.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      filterProducts();
+    }
+  });
+
+  checkboxAll_Price.addEventListener("change", function () {
+    if (this.checked) {
+      checkboxesPrice.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      filterProducts();
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector(".review").addEventListener("click", function (event) {
-    event.preventDefault();
-    var contentElement = document.getElementById("well");
-    contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
+  document
+    .getElementsByClassName("review")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      var contentElement = document.getElementById("well");
+      contentElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 });
+const rv = document.getElementsByClassName("review");
+console.log(rv);
 
 document.addEventListener("DOMContentLoaded", function () {
   document

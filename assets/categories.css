@@ -1082,6 +1082,49 @@ header {
     float: left;
 }
 
+.trending-searches {
+    display: none;
+    position: absolute;
+    margin-top: 6px;
+    background-color: #c6c6c6;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 550px;
+    z-index: 1000;
+
+}
+
+.trending-searches h3 {
+    padding: 8px 0 5px 8px;
+    text-align: start;
+}
+
+.input-box {
+
+    position: relative;
+}
+
+.input-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.input-box li {
+    border-radius: 3px;
+    text-align: start;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.input-box a {
+    color: #000;
+    text-decoration: none;
+}
+
+.input-box li:hover {
+    background-color: #dfdede;
+}
 
 
 @media only screen and (max-width: 992px) {

@@ -4,10 +4,10 @@
 <!-- Kiểm tra coi có login chưa khi bấm nút submit và lưu vào database bỏ comment_status ra nhá  -->
 <?php
 
+
+
 if (isset($_POST['submit'])) {
-
     if (!isset($_SESSION['id'])) {
-
         header("Location: log-in.php");
         exit;
     }
@@ -17,10 +17,11 @@ if (isset($_POST['submit'])) {
     $comment_pro_id = $_GET['id'];
     $comment_user_id = $_SESSION['id'];
     $comment_content = $_POST['comment_content'];
-    if (!empty($comment_content)) {
+    $comment_name = $_POST['comment_name'];
+    if (!empty($comment_content) || !empty($comment_name)) {
         // Nếu khác rỗng, thực hiện thêm vào cơ sở dữ liệu
-        $query = "INSERT INTO comments (comment_pro_id, comment_user_id, comment_content, comment_date) ";
-        $query .= "VALUES ('$comment_pro_id', '$comment_user_id', '$comment_content', NOW())";
+        $query = "INSERT INTO comments (comment_pro_id, comment_user_id, comment_content, comment_name ,comment_date) ";
+        $query .= "VALUES ('$comment_pro_id', '$comment_user_id', '$comment_content', '$comment_name' ,NOW())";
         $result = mysqli_query($connection, $query);
 
         if ($result) {
@@ -33,12 +34,44 @@ if (isset($_POST['submit'])) {
         }
     } else {
         // Nếu comment_content rỗng, hiển thị thông báo lỗi
-        echo "<script>alert('Vui lòng nhập bình luận!');</script>";
+        echo "<script>alert('Vui lòng nhập bình luận và tên của bạn !');</script>";
     }
 }
 ?>
 
+<?php
+if (isset($_POST['replycmt'])) {
+    $comment_user_id = $_SESSION['id'];
+    $comment_pro_id = $_GET['id'];
+    $reply_comment_content = $_POST['comment_content'];
+    $reply_comment_name = $_POST['comment_name'];
+    $comment_id_reply = $_POST['comment_id_reply']; // Lấy ID của comment mà bạn đang trả lời
+
+    if (!empty($reply_comment_content) || !empty($reply_comment_name)) {
+        //Thực hiện thêm reply comment vào cơ sở dữ liệu
+        $query1 = "INSERT INTO comment_replys (id_user_comment, id_comment_reply, rep_comment_content, rep_comment_name,rep_comment_date) ";
+        $query1 .= "VALUES ('$comment_user_id', '$comment_id_reply', '$reply_comment_content','$reply_comment_name', NOW())";
+        $result1 = mysqli_query($connection, $query1);
+
+        if ($result1) {
+            // Thêm reply comment thành công, có thể thực hiện hành động cần thiết sau khi thêm
+            // Ví dụ: Hiển thị thông báo thành công, làm mới trang, vv.
+            header("Location: details.php?id=$comment_pro_id");
+            exit;
+        } else {
+            echo "<script>alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');</script>";
+        }
+    } else {
+        echo "<script>alert('Vui lòng nhập bình luận và tên của bạn !');</script>";
+    }
+}
+
+?>
+
+
+
 <div class="container">
+
     <div class=" row">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./index.html" target="_blank">Trang chủ</a></li>
@@ -71,7 +104,7 @@ if (isset($_POST['submit'])) {
         <div class="pd-body">
             <div class="pd-left">
                 <div class="image">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="50">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -194,9 +227,12 @@ if (isset($_POST['submit'])) {
         <!-- // comment -->
         <div class="well" id="well">
             <h4>Leave a Comment:</h4>
+            </br>
             <form role="form" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" name="comment_content" rows="3"></textarea>
+                    <input class="form-control" name="comment_name" placeholder="Nhập tên" />
+                    </br>
+                    <textarea class="form-control" name="comment_content" rows="3" placeholder="Nhập bình luận"></textarea>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -208,7 +244,6 @@ if (isset($_POST['submit'])) {
             if (isset($_GET['page'])) {
 
                 $page = $_GET['page'];
-
             } else {
                 $page = "";
             }
@@ -223,14 +258,13 @@ if (isset($_POST['submit'])) {
             $find_count = mysqli_query($connection, $cmt_query_count);
             $count = mysqli_num_rows($find_count);
             $count = ceil($count / $per_page);
-
-
             $product_id = $_GET['id'];
             $query = "SELECT * FROM comments WHERE comment_pro_id = $product_id ORDER BY comment_id DESC LIMIT $page_1 ,$per_page";
             $result = mysqli_query($connection, $query);
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $reply_comment_id = $row['comment_id'];
                     $user_id = $row['comment_user_id'];
                     $query1 = "SELECT * FROM users WHERE user_id = $user_id";
                     $result1 = mysqli_query($connection, $query1);
@@ -245,67 +279,81 @@ if (isset($_POST['submit'])) {
                                 <img class="media-object" style=" margin-right: 16px; border-radius: 45px;" src="http://placehold.it/64x64" alt="">
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><?php echo $name['username']; ?>
-                                </h4>
-                                <?php echo "<p>{$row['comment_content']}</p>"; ?>
-                                <small class="date_cmt" id="comment_date"><?php echo $row['comment_date']; ?></small>
-                                <i class="bi bi-dot"></i>
-                                <p class="likes re-link">Thích </p>
-                                <i class="bi bi-dot"></i>
-                                <p class="reply re-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Trả lời</p>
+                                <form role="form" method="post">
+                                    <input type="hidden" class="form-control" name="product_id" value="<?php echo $product_id ?>">
+                                    <input type="hidden" class="form-control" name="comment_id_reply" value="<?php echo $row['comment_id'] ?>">
+                                    <h4 class="media-heading"><?php echo $row['comment_name']; ?>
+                                    </h4>
+                                    <?php echo "<p>{$row['comment_content']}</p>"; ?>
+                                    <small class="date_cmt" id="comment_date"><?php echo $row['comment_date']; ?></small>
+                                    <i class="bi bi-dot"></i>
+                                    <p class="likes re-link">Thích </p>
+                                    <i class="bi bi-dot"></i>
+                                    <p class="reply re-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop_<?php echo $row['comment_id']; ?>">
+                                        Trả lời
+                                    </p>
 
-                                <!-- Modal -->
-                                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Trả lời </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="" method="post">
+                                    <!-- Modal -->
+                                    <div class="modal fade " id="staticBackdrop_<?php echo $row['comment_id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Trả lời </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- <form action="" method="post"> -->
                                                     <div class="form-group">
                                                         <textarea class="form-control" name="comment_content" rows="3"></textarea>
                                                     </div>
 
                                                     </br>
                                                     <div class="form-group">
-                                                        <input class="form-control" name="replyName" placeholder="Nhập họ và tên">
+                                                        <input class="form-control" name="comment_name" placeholder="Nhập họ và tên">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-primary" name="replycmt">Hoàn tất</button>
                                                     </div>
-                                                </form>
+
+                                                </div>
+
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
                             </div>
                         </div>
-                        <div class="user-block reply-cmt">
-                            <div class="avatar avatar-md avatar-logo avatar-circle">
-                                <div class="avatar-shape"><img src="https://fptshop.com.vn/api-data/comment/Content/desktop/images/logo.png" alt="logo"></div>
-                                <div class="avatar-info">
-                                    <div class="avatar-name">
-                                        <div class="text">Nguyễn Văn Huy</div>
-                                    </div>
-                                    <div class="avatar-para">
-                                        <div class="text">
-                                            <p>Chào anh Tú Lâm,</p>
-                                            <p>Dạ, máy cũ lỗi vẫn áp dụng chương trình "Đổi máy cũ - 2G - hư hỏng tặng PMH giảm thêm 300.000đ" được ạ.&nbsp;Để được hỗ trợ chi tiết về sản phẩm, anh vui lòng liên hệ tổng đài miễn phí 18006601 hoặc để lại SĐT bên em liên hệ tư vấn nhanh nhất ạ.</p>
-                                            <p>Thân mến!</p>
+                        <?php
+                        $query2 = "SELECT * FROM comment_replys WHERE id_comment_reply = $reply_comment_id ";
+                        $result2 = mysqli_query($connection, $query2);
+                        if (mysqli_num_rows($result2) > 0) {
+                            while ($row1 = mysqli_fetch_assoc($result2)) {
+                        ?>
+                                <div class="user-block reply-cmt">
+                                    <div class="avatar avatar-md avatar-logo avatar-circle">
+                                        <div class="avatar-shape"><img src="https://fptshop.com.vn/api-data/comment/Content/desktop/images/logo.png" alt="logo"></div>
+                                        <div class="avatar-info">
+                                            <div class="avatar-name">
+                                                <div class="text"><?php echo $row1['rep_comment_name'] ?> trả lời <?php echo $row['comment_name'] ?></div>
+                                            </div>
+                                            <div class="avatar-para">
+                                                <div class="text">
+                                                    <?php echo "<p>{$row1['rep_comment_content']}</p>"; ?>
+                                                </div>
+                                            </div>
+                                            <div class="avatar-time">
+                                                <small class="date_cmt" id="comment_date"><?php echo $row1['rep_comment_date']; ?></small>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="avatar-time">
-                                        <div class="text text-grayscale">3 ngày trước</div> <i class="bi bi-dot"></i></i>
-                                        <div class="likes re-link">Thích </div> <i class="bi bi-dot"></i></i>
-                                        <div class="reply re-link" aria-controls="comment-reply-invalid">Trả lời</div>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        } else {
+                        }
+                        ?>
+
                     </div>
             <?php
                 }
