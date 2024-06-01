@@ -15,7 +15,7 @@
                         <picture><img alt="img" src="../assets/img/empty-cart.png" width="296" height="180" decoding="async" data-nimg="1" loading="lazy" style="color: transparent;"></picture>
                     </div>
                     <p class="css-8uyn92 text-red-5 px-16 md:px-0">Chưa có sản phẩm nào trong giỏ hàng</p>
-                    <p class="cart-empty_desc__Zn4GU">Cùng mua sắm hàng ngàn sản phẩm tại FPTShop nhé!</p>
+                    <p class="cart-empty_desc__Zn4GU">Cùng mua sắm hàng ngàn sản phẩm tại Shop nhé!</p>
                     <div class="cart-status_btn m-b-32 cart-empty_cart-status_btn__yWtjL">
                         <a href="../public/index.php">
                             <button type="button" class="btn btn-danger">
@@ -55,13 +55,13 @@
                         Đơn giá: <span id="total-price">0đ</span>
                     </p>
                 </div>
-                <?php
-                    checkout_cart();
-                ?>
                 <div class="summit">
                     <span style="font-size: 20px;font-weight:600;">Địa chỉ nhận hàng</span>
                     <form id="myForm" method="post">
                         <div class="row p-0 mt-3">
+                            <?php
+                            checkout_cart();
+                            ?>
                             <div class="col-4">
                                 <div class="form-group">
                                     <select id="province" name="province" class="form-control">
@@ -103,11 +103,11 @@
                                 </div>
                             </div>
                             <div class="col-12 mt-2">
-                                <input type="button" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng" onchange="checkout();">
+                                <input type="button" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng" onchange="checkout();" name="checkout">
                             </div>
                         </div>
                     </form>
-                   
+
                     <br>
                 </div>
             </div>

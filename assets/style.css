@@ -1025,7 +1025,98 @@ header {
 .circle_wish_delete path:hover{
     color: red;
 }
+.st-brand .box-container {
+    background-color: unset;
+    padding: 0;
+}
 
+.box-container {
+    margin: 0 auto;
+    position: relative;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 5px 5px 0 5px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+.st-brand .wrapper {
+    padding: 20px 16px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 4px 0 #0a0a0a26;
+    box-shadow: 0 1px 4px 0 #0a0a0a26;
+    border-radius: 6px;
+}
+.st-brand .title {
+    margin-bottom: 16px;
+}
+.st-brand .title h2 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #32373d;
+    margin-bottom: 16px;
+}
+.st-brand.st-bsalev2 .title-img {
+    padding-top: 97px;
+}
+.st-brand .title-img {
+    position: relative;
+    padding-top: 195px;
+    z-index: 1;
+}
+.st-brand .title-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+.st-brand.st-bsalev2 .list-brand {
+    gap: 40px;
+}
+.st-brand .list-brand {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.st-brand.st-bsalev2 .brand-item:not(:last-child) {
+    margin-right: 0;
+}
+.st-brand.st-bsalev2 .brand-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: unset;
+    background: 0 0;
+    text-align: center;
+}
+
+.st-brand.st-bsalev2 .brand-item .item-img {
+    padding: 0;
+}
+.st-brand .brand-item .item-img {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.8px;
+}
+.st-brand.st-bsalev2 .item-img a {
+
+    display: block;
+}
+.list-brand .item-img a {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
 @media only screen and (max-width: 992px){
     .col-mb3 {
         width: calc(100% / 4) !important;

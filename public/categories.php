@@ -360,6 +360,9 @@
                                 </div>
                             </div>
                         </div>
+                        <?php 
+                            insertWishlists();
+                        ?>
                         <div class="col-9 p-0">
                             <div class="cart" id="products">
 
@@ -423,6 +426,7 @@
                     </div>
                 </div>
         </section>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Go To Top</button>
     </main>
     <footer>
         <div class="footer">
@@ -525,6 +529,21 @@
                 trendingSearches.style.display = 'none';
             }, 100);
         });
+    });
+    $('#myBtn').on('click', function () {
+        $('html, body').animate({
+            scrollTop: 0,
+        }, 300);
+    });
+
+    $(window).on('scroll', function () {
+        var scrolling = $(this).scrollTop();
+
+        if (scrolling > 300) {
+            $('#myBtn').fadeIn();
+        } else {
+            $('#myBtn').fadeOut();
+        }
     });
 </script>
 

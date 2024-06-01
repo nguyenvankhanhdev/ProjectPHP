@@ -1,11 +1,6 @@
 <?php require_once("../resources/config.php"); ?>
 <?php include(TEMPLATE_FRONT . DS . "header_details.php"); ?>
-
-<!-- Kiểm tra coi có login chưa khi bấm nút submit và lưu vào database bỏ comment_status ra nhá  -->
 <?php
-
-
-
 if (isset($_POST['submit'])) {
     if (!isset($_SESSION['id'])) {
         header("Location: log-in.php");
@@ -13,27 +8,22 @@ if (isset($_POST['submit'])) {
     }
 }
 if (isset($_POST['submit'])) {
-
     $comment_pro_id = $_GET['id'];
     $comment_user_id = $_SESSION['id'];
     $comment_content = $_POST['comment_content'];
     $comment_name = $_POST['comment_name'];
     if (!empty($comment_content) || !empty($comment_name)) {
-        // Nếu khác rỗng, thực hiện thêm vào cơ sở dữ liệu
         $query = "INSERT INTO comments (comment_pro_id, comment_user_id, comment_content, comment_name ,comment_date) ";
         $query .= "VALUES ('$comment_pro_id', '$comment_user_id', '$comment_content', '$comment_name' ,NOW())";
         $result = mysqli_query($connection, $query);
 
         if ($result) {
-
             header("Location: details.php?id=$comment_pro_id");
             exit;
         } else {
-
             echo "<script>alert('Đã có lỗi xảy ra. Vui lòng thử lại sau!');</script>";
         }
     } else {
-        // Nếu comment_content rỗng, hiển thị thông báo lỗi
         echo "<script>alert('Vui lòng nhập bình luận và tên của bạn !');</script>";
     }
 }
@@ -45,17 +35,13 @@ if (isset($_POST['replycmt'])) {
     $comment_pro_id = $_GET['id'];
     $reply_comment_content = $_POST['comment_content'];
     $reply_comment_name = $_POST['comment_name'];
-    $comment_id_reply = $_POST['comment_id_reply']; // Lấy ID của comment mà bạn đang trả lời
+    $comment_id_reply = $_POST['comment_id_reply'];
 
     if (!empty($reply_comment_content) || !empty($reply_comment_name)) {
-        //Thực hiện thêm reply comment vào cơ sở dữ liệu
         $query1 = "INSERT INTO comment_replys (id_user_comment, id_comment_reply, rep_comment_content, rep_comment_name,rep_comment_date) ";
         $query1 .= "VALUES ('$comment_user_id', '$comment_id_reply', '$reply_comment_content','$reply_comment_name', NOW())";
         $result1 = mysqli_query($connection, $query1);
-
         if ($result1) {
-            // Thêm reply comment thành công, có thể thực hiện hành động cần thiết sau khi thêm
-            // Ví dụ: Hiển thị thông báo thành công, làm mới trang, vv.
             header("Location: details.php?id=$comment_pro_id");
             exit;
         } else {
@@ -85,6 +71,7 @@ if (isset($_POST['replycmt'])) {
     $query_details = query($query);
     while ($row = fetch_array($query_details)) :
         $formated_price = number_format($row['product_price'], 0, ",", ".");
+        $formated_price_sale = number_format($row['product_price']+2000000, 0, ",", ".");
     ?>
         <div class="pd-top">
             <h1 class="details-name title-name"> <?php echo $row['product_title']; ?></h1>
@@ -156,8 +143,9 @@ if (isset($_POST['replycmt'])) {
             <div class="pd-right">
                 <div class="price_details">
                     <div class="price">
+<?php echo $formated_price; ?>đ
                     </div>
-                    <strike> <?php echo $formated_price; ?>đ </strike>
+                    <strike> <?php echo $formated_price_sale; ?> đ </strike>
 
                 </div>
 
@@ -168,7 +156,7 @@ if (isset($_POST['replycmt'])) {
                             <tbody>
                                 <tr>
                                     <td>Màn hình</td>
-                                    <td>6.7 inch, Super Retina XDR, 2796 x 1290 Pixels</td>
+                                    <td><?php echo $row['Display']?></td>
                                 </tr>
                                 <tr>
                                     <td>Camera sau</td>
@@ -180,15 +168,15 @@ if (isset($_POST['replycmt'])) {
                                 </tr>
                                 <tr>
                                     <td>Bộ nhớ trong</td>
-                                    <td>128 GB</td>
+                                    <td><?php echo $row['Memory']?> GB</td>
                                 </tr>
                                 <tr>
                                     <td>CPU</td>
-                                    <td>Apple A16 Bionic</td>
+                                    <td><?php echo $row['Chip']?></td>
                                 </tr>
                                 <tr>
-                                    <td>Dung lượng pin</td>
-                                    <td>29 Giờ</td>
+                                    <td>RAM</td>
+                                    <td><?php echo $row['Ram']?> GB</td>
                                 </tr>
                                 <tr>
                                     <td>Thẻ sim</td>

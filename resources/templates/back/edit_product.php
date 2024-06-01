@@ -5,8 +5,8 @@ if (isset($_GET['id'])) {
     confirm($query);
     while ($row = fetch_array($query)) {
         $pro_title = escape_string($row['product_title']);
-        $pro_descrip = escape_string($row['product_description']);
         $pro_price = escape_string($row['product_price']);
+        $pro_description = escape_string($row['product_description']);
         $pro_cat_id = escape_string($row['product_cat_id']);
         $pro_brand_id = escape_string($row['brand_id']);
         $display = escape_string($row['Display']);
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
 <div class="col-md-12">
     <div class="row">
         <h1 class="page-header">
-            Add Product
+            Edit Product
 
         </h1>
     </div>
@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
             </div>
             <div class="form-group">
                 <label for="product-title">Product Description</label>
-                <textarea name="product_description" id="" value="<?php echo $pro_descrip; ?>" cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="product_description" cols="5" rows="5" class="form-control"><?php echo $pro_description;?></textarea>
             </div>
             <div class="form-group row">
                 <div class="col-xs-3">
@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
             <div class="form-group">
                 <label for="product-title">Product Category</label>
 
-                <select name="product_cat_id" id="" class="form-control">
+                <select name="product_cat_id" class="form-control">
                     <option value="<?php echo $pro_cat_id; ?>"><?php echo show_cate_add_product($pro_cat_id);?></option>
                     <?php
                     $query = query("SELECT * FROM categories");

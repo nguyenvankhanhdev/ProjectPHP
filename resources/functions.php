@@ -70,6 +70,8 @@ function getProduct()
                 <div class="price-sale">{$formatted} đ</div>
                 <div class="price-strike">
                     <strike>{$price_sale} đ</strike>
+                    <p style="display:none;" class="day_sale">2 ngày 13:37:50</p>
+                    <p id="countdown"></p>
                 </div>
             </div>
             <div class="cart-product">
@@ -91,7 +93,7 @@ function getProduct()
                 <div class="btn-buynow">
                     <a href="../resources/cart.php?add={$row['product_id']}">Mua ngay</a>
                 </div>
-                <div class="btn-buynow">
+                <div class="btn-buynow" >
                     <a href="./index.php?wishlists={$row['product_id']}">Yêu thích</a>
                 </div>
             </div>
@@ -396,7 +398,7 @@ function checkout_cart()
                 $stmt_update_quantity->execute();
             }
             $pdo->commit();
-            echo "<div class='order_id'>$order_id</div>";
+            echo "<div class='order_id' name='order_id'>$order_id</div>";
         } catch (PDOException $e) {
             echo $e;
             $e->getMessage();
@@ -409,9 +411,16 @@ function checkout_cart()
 function insertWishlists()
 {
     if (isset($_GET['wishlists'])) {
-        $query = query("INSERT INTO wishlists(wish_user_id, wish_product_id) values({$_SESSION['id']},{$_GET['wishlists']})");
-        confirm($query);
-        redirect("");
+        $product_id = $_GET['wishlists'];
+        $check_query = query("SELECT * FROM wishlists WHERE wish_user_id = {$_SESSION['id']} AND wish_product_id = $product_id");
+        if (mysqli_num_rows($check_query) > 0) {
+            echo "<script>alert(' This product is already in your wishlist.');</script>";
+        } else {
+            $query = query("INSERT INTO wishlists(wish_user_id, wish_product_id) 
+            values({$_SESSION['id']},{$_GET['wishlists']})");
+            confirm($query);
+            redirect("wishlists.php");
+        }
     }
 }
 function check_role()
@@ -533,7 +542,6 @@ function get_orders()
 }
 function get_product_in_admin()
 {
-
     $query = 'SELECT * FROM products ';
     $send_query = query($query);
     confirm($send_query);
@@ -547,7 +555,6 @@ function get_product_in_admin()
         $brand = show_brands_add_product($row['brand_id']);
         $formated = number_format($row['product_price'], 0, ",", ".");
         $product = <<<DELIMETER
-    
             <tr>
                 <td>{$row['product_id']}</td>
                 <td style="max-width:80px;">{$row['product_title']}</td>

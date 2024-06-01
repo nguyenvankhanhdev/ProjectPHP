@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }">Mua ngay</a>
                 </div>
                 <div class="btn-buynow">
-                    <a href="../resources/cart.php?add=${
+                    <a href="./categories.php?cat_id=1&wishlists=${
                       product.product_id
                     }">Yêu Thích</a>
                 </div>

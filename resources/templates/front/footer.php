@@ -84,4 +84,87 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="../assets/js/index.js"></script>
+<script>
+    //Get the button
+    $('#myBtn').on('click', function() {
+        $('html, body').animate({
+            scrollTop: 0,
+        }, 300);
+    });
+
+    $(window).on('scroll', function() {
+        var scrolling = $(this).scrollTop();
+
+        if (scrolling > 300) {
+            $('#myBtn').fadeIn();
+        } else {
+            $('#myBtn').fadeOut();
+        }
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+            // Get all elements with the class 'day_sale'
+            var elements = document.querySelectorAll('.day_sale');
+            
+            elements.forEach(function(element, index) {
+                // Create a new element to show the countdown
+                var countdownElement = document.createElement('p');
+                countdownElement.id = 'countdown' + index;
+                countdownElement.className = 'countdown';
+                element.insertAdjacentElement('afterend', countdownElement);
+
+                // Get the text content and trim it
+                var timeText = element.textContent.trim();
+                console.log("Time Text:", timeText);  // Debug: Print the raw time text
+                
+                // Extract days, hours, minutes, and seconds from the text
+                var parts = timeText.split(' ');
+                console.log("Parts:", parts);  // Debug: Print the split parts
+                
+                var days = parseInt(parts[0].replace('ngày', '').trim());
+                console.log("Days:", days);  // Debug: Print days
+                
+                var timeParts = parts[2].split(':');
+                console.log("Time Parts:", timeParts);  // Debug: Print the time parts
+                
+                var hours = parseInt(timeParts[0]);
+                var minutes = parseInt(timeParts[1]);
+                var seconds = parseInt(timeParts[2]);
+
+                console.log("Parsed Time - Hours:", hours, "Minutes:", minutes, "Seconds:", seconds);  // Debug: Print parsed time parts
+
+                // Calculate the target time
+                var now = new Date();
+                var targetTime = new Date(now.getTime() + days * 24 * 60 * 60 * 1000 + hours * 60 * 60 * 1000 + minutes * 60 * 1000 + seconds * 1000);
+
+                // Function to update the countdown timer
+                function updateCountdown() {
+                    var currentTime = new Date().getTime();
+                    var distance = targetTime - currentTime;
+
+                    if (distance < 0) {
+                        clearInterval(countdownTimer);
+                        countdownElement.innerHTML = "EXPIRED";
+                        return;
+                    }
+
+                    var daysLeft = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hoursLeft = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutesLeft = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var secondsLeft = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    console.log("Countdown - Days:", daysLeft, "Hours:", hoursLeft, "Minutes:", minutesLeft, "Seconds:", secondsLeft);  // Debug: Print countdown values
+
+                    countdownElement.innerHTML = daysLeft + " ngày " + hoursLeft + ":" + minutesLeft + ":" + secondsLeft;
+                }
+
+                // Update the countdown every second
+                var countdownTimer = setInterval(updateCountdown, 1000);
+                updateCountdown(); // Initial call to display the timer immediately
+            });
+        });
+    </script>
+</script>
+
 </html>

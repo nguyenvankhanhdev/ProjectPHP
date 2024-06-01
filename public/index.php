@@ -42,6 +42,32 @@
         </div>
     </div>
 </section>
+
+<section class="st-brand st-bsalev2 container">
+    <div class="box-container">
+        <div class="wrapper">
+            <div class="title">
+                <h2>SỞ HỮU IPHONE 15 TRẢ GÓP TỪ 69K/NGÀY</h2>
+                <div class="title-img"><a href="https://fptshop.com.vn/dien-thoai/apple-iphone"><img src="https://images.fpt.shop/unsafe/fit-in/1168x97/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2024/5/2/638502733227139543_H7- 1200x100.png" alt=""></a></div>
+            </div>
+            <ul class="list-brand">
+                <li class="brand-item">
+                    <div class="item-img"><a href="https://fptshop.com.vn/dien-thoai/iphone-15-pro-max"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2024/5/2/638502733223077314_D (1).png" alt="iPhone 15 Pro Max"></a></div>
+                </li>
+                <li class="brand-item">
+                    <div class="item-img"><a href="https://fptshop.com.vn/dien-thoai/iphone-15-pro"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2024/5/2/638502733230957777_D (2).png" alt="iPhone 15 Pro"></a></div>
+                </li>
+                <li class="brand-item">
+                    <div class="item-img"><a href="https://fptshop.com.vn/dien-thoai/iphone-15-plus"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2024/5/2/638502733225889593_D (3).png" alt="iPhone 15 Plus"></a></div>
+                </li>
+                <li class="brand-item">
+                    <div class="item-img"><a href="https://fptshop.com.vn/dien-thoai/iphone-15"><img src="https://images.fpt.shop/unsafe/fit-in/262x324/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2024/5/2/638502733226827103_D (4).png" alt="iPhone 15"></a></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <section>
     <div class="container">
         <div class="banner">
@@ -50,9 +76,11 @@
                     <img src="../assets/img/banner-laptop.webp" alt="">
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </section>
+
+
 <section>
     <div class="container">
         <div class="cartt">
@@ -84,8 +112,8 @@
             </div>
         </div>
     </div>
-
 </section>
+
 <section>
     <div class="container">
         <div class="service">
@@ -132,6 +160,7 @@
                 </a>
             </ul>
 
+            <button onclick="topFunction()" id="myBtn" title="Go to top">Go To Top</button>
         </div>
     </div>
 </section>

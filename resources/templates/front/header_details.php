@@ -47,6 +47,10 @@
             .input-box li:hover {
                 background-color: #dfdede;
             }
+            .count-cart{
+                color: #fff;
+                font-weight: bold;
+            }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -76,14 +80,6 @@
                                 <div class="logo-item flex-align-center">
                                     <a href="./index.php"><img class="mr-4" src="../assets/img/logo-mb.png" alt=""></a>
                                 </div>
-                                <?php
-                                $query = "SELECT search_term FROM search_history ORDER BY search_count DESC LIMIT 5";
-                                $result = mysqli_query($connection, $query);
-                                $trendingSearches = [];
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $trendingSearches[] = $row['search_term'];
-                                }
-                                ?>
                                 <div class="g-search">
                                     <form action="../public/search.php" method="post">
                                         <div class="input-box">
@@ -91,18 +87,7 @@
                                             <button type="submit" class="input-box-search" name="search-s">
                                                 <i class="bi bi-search"></i>
                                             </button>
-                                            <div class="trending-searches" id="trending-searches">
-                                                <h3>Xu hướng tìm kiếm</h3>
-                                                <ul>
-                                                    <?php foreach ($trendingSearches as $term) : ?>
-                                                        <a href="search.php?s-title=<?php echo urlencode($term); ?>">
-                                                            <li>
-                                                                <?php echo htmlspecialchars($term); ?>
-                                                            </li>
-                                                        </a>
-                                                    <?php endforeach; ?>
-                                                </ul>
-                                            </div>
+                                            
                                         </div>
                                     </form>
                                 </div>
@@ -124,7 +109,7 @@
                                 ?>
                                 <div class="market">
                                     <a href="./checkout.php" target="_blank"><i class="bi bi-cart"></i></a>
-                                    <p class="count-cart">
+                                    <p class="count-cart" style="color: #fff;">
                                         <?php
                                         if (isset($_SESSION['cart_quantity'])) {
                                             echo $_SESSION['cart_quantity'];

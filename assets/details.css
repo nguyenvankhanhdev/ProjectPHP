@@ -121,8 +121,8 @@ html {
 .input-box-search {
     position: absolute;
     width: auto;
-    width: 5%;
-    padding: 10px 2px;
+    width: 7%;
+    padding: 8px 2px;
     border: none;
     border-radius: 0 6px 6px 0px;
     left: 91.6%;
@@ -220,7 +220,7 @@ html {
 
 .menu {
     position: relative;
-    width: calc(20%);
+    width: calc(25%);
     text-align: center;
 }
 
