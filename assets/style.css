@@ -1029,7 +1029,9 @@ header {
     background-color: unset;
     padding: 0;
 }
-
+.price-strike p{
+    font-size: 15px;
+}
 .box-container {
     margin: 0 auto;
     position: relative;

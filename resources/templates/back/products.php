@@ -28,9 +28,7 @@
                 <?php 
 
                 //get_product_in_admin(); 
-
-                $results_per_page = 5;
-
+                $results_per_page = 10;
                 if (isset($_GET['page']) && is_numeric($_GET['page'])) {
                     $current_page = (int) $_GET['page'];
                 } else {
@@ -88,12 +86,10 @@ $result = mysqli_query($connection, "SELECT COUNT(*) AS total FROM products");
 $page = mysqli_fetch_assoc($result);
 $total_pages = ceil($page['total'] / $results_per_page);
 
-// Display the "Prev" button
 if ($current_page > 1) {
     echo "<a style='font-size:15px;margin-right:5px;' href=\"index.php?products&page=" . ($current_page - 1) . "\" class=\"btn btn-primary fs-5\">Prev</a> ";
 }
 
-// Display the page numbers
 for ($i = 1; $i <= $total_pages; $i++) {
     if ($i == $current_page) {
         echo "<a style='font-size:15px;margin-right:5px;' href=\"index.php?products&page=$i\" class=\"btn btn-danger active fs-5\">$i</a> ";
@@ -102,7 +98,6 @@ for ($i = 1; $i <= $total_pages; $i++) {
     }
 }
 
-// Display the "Next" button
 if ($current_page < $total_pages) {
     echo "<a style='font-size:15px;margin-right:5px;' href=\"index.php?products&page=" . ($current_page + 1) . "\" class=\"btn btn-primary\" >Next</a> ";
 }

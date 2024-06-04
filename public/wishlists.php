@@ -2,6 +2,13 @@
 <?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
 
 <div class="container">
+                <div class=" row">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="./index.php" target="_blank">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="">Yêu thích</a></li>
+                    </ol>
+                </div>
+<div class="container">
     <div class="col-md-12 mt-5">
         <div class="row">
         </div>

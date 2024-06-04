@@ -49,6 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const checkboxAll_Brand = document.getElementById("checkbox_all");
   const checkboxAll_Price = document.getElementById("checkbox_all_price");
 
+  // Đảm bảo checkbox "Tất cả" ban đầu được chọn
+  checkboxAll_Brand.checked = true;
+  checkboxAll_Price.checked = true;
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const catId = urlParams.get("cat_id");
@@ -73,25 +77,42 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("There was a problem with your fetch operation:", error);
     });
+
   const checkboxesBrand = document.querySelectorAll(".checkInput_brand");
   const checkboxesPrice = document.querySelectorAll(".checkInput_price");
+
   checkboxesBrand.forEach((checkbox) => {
-    checkbox.addEventListener("change", filterProducts);
+    checkbox.addEventListener("change", filterBrands);
   });
   checkboxesPrice.forEach((checkbox) => {
-    checkbox.addEventListener("change", filterProducts);
+    checkbox.addEventListener("change", filterPrices);
   });
-  function filterProducts() {
+
+  checkboxAll_Brand.addEventListener("change", function () {
+    if (this.checked) {
+      checkboxesBrand.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      this.checked = true;
+      filterBrands();
+    }
+  });
+
+  checkboxAll_Price.addEventListener("change", function () {
+    if (this.checked) {
+      checkboxesPrice.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      this.checked = true;
+      filterPrices();
+    }
+  });
+
+  function filterBrands() {
     if (Array.from(checkboxesBrand).some((checkbox) => checkbox.checked)) {
       checkboxAll_Brand.checked = false;
     } else {
       checkboxAll_Brand.checked = true;
-    }
-
-    if (Array.from(checkboxesPrice).some((checkbox) => checkbox.checked)) {
-      checkboxAll_Price.checked = false;
-    } else {
-      checkboxAll_Price.checked = true;
     }
 
     selectedBrands = Array.from(checkboxesBrand)
@@ -101,6 +122,16 @@ document.addEventListener("DOMContentLoaded", function () {
       )
       .map((checkbox) => parseInt(checkbox.getAttribute("data-value")));
 
+    filterProducts();
+  }
+
+  function filterPrices() {
+    if (Array.from(checkboxesPrice).some((checkbox) => checkbox.checked)) {
+      checkboxAll_Price.checked = false;
+    } else {
+      checkboxAll_Price.checked = true;
+    }
+
     selectedPrices = Array.from(checkboxesPrice)
       .filter(
         (checkbox) =>
@@ -108,6 +139,10 @@ document.addEventListener("DOMContentLoaded", function () {
       )
       .map((checkbox) => parseInt(checkbox.getAttribute("data-value")));
 
+    filterProducts();
+  }
+
+  function filterProducts() {
     let filteredData = apiData;
 
     if (selectedBrands.length > 0) {
@@ -121,8 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedPrices.includes(getPriceCategory(product.product_price))
       );
     }
-    productsDiv.innerHTML = "";
 
+    productsDiv.innerHTML = "";
     currentPage = 0;
     displayProducts(filteredData);
   }
@@ -192,29 +227,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  document
-    .getElementById("btn-loadmore")
-    .addEventListener("click", function () {
-      fetchNextPage();
-    });
-  checkboxAll_Brand.addEventListener("change", function () {
-    if (this.checked) {
-      checkboxesBrand.forEach((checkbox) => {
-        checkbox.checked = false;
-      });
-      filterProducts();
-    }
-  });
-
-  checkboxAll_Price.addEventListener("change", function () {
-    if (this.checked) {
-      checkboxesPrice.forEach((checkbox) => {
-        checkbox.checked = false;
-      });
-      filterProducts();
-    }
-  });
+  if (hasNextPage()) {
+    const loadMoreBtn = document.createElement("button");
+    loadMoreBtn.textContent = "Tải thêm";
+    loadMoreBtn.classList.add("load-more-btn");
+    loadMoreBtn.addEventListener("click", fetchNextPage);
+    productsDiv.appendChild(loadMoreBtn);
+  }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   document
@@ -226,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 const rv = document.getElementsByClassName("review");
-console.log(rv);
 
 document.addEventListener("DOMContentLoaded", function () {
   document

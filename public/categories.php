@@ -143,8 +143,6 @@
     confirm($cate_query);
     $row_cate = mysqli_fetch_assoc($cate_query);
     ?>
-
-
     <main>
         <section>
             <div class="container">
@@ -154,7 +152,7 @@
                         <li class="breadcrumb-item"><a href=""><?php echo $row_cate['cat_title']; ?></a></li>
                     </ol>
                 </div>
-                <div class="section-tabs">
+                <!-- <div class="section-tabs">
                     <div class="card">
                         <div class="card-body">
                             <div class="chapter-tabs">
@@ -181,33 +179,21 @@
                                         <div class="chapter-label">Đồng hồ thông minh</div>
 
                                     </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href="">
-                                            <i class="ic-galaxy-buds"></i>
-                                        </a>
-                                        <div class="chapter-label">Tai nghe</div>
-
-                                    </div>
-                                    <div class="chapter">
-                                        <a class="chapter-img" href=""><i class="ic-apple-cable"></i></a>
-                                        <div class="chapter-label">Phụ kiện chính hãng</div>
-
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
-
         <section>
             <div class="container">
                 <div class="section-hot">
                     <div class="section-title">Khuyến Mãi Hot</div>
                     <div class="hot-promotion-inner">
                         <div class="promotion-main">
-                            <a href="">
+                            <a href="http://localhost:8080/Project_php/public/details.php?id=102">
                                 <img src="../assets/img/638110459464426127_Frame 47642.png" alt="">
                                 <div class="promotion-text">
                                     <div class="hot-promotion-title"> Mua ngay Galaxy S23 Series nhận đặc quyền đến 10
@@ -234,7 +220,7 @@
                                 </a>
                             </div>
                             <div class="promotion-mini-item mb-4 ">
-                                <a href="">
+                                <a href="http://localhost:8080/Project_php/public/details.php?id=96">
                                     <img src="../assets/img/638110649652773958_bespoke1.png" alt="">
                                     <div class="mini-promotion-text">
                                         <div class="mini-product-title">
@@ -322,7 +308,6 @@
                                                 <label for="">Nokia</label>
                                             </p>
                                         </form>
-
                                     </div>
                                 </div>
                                 <div class="cdt-filter_block">

@@ -113,7 +113,6 @@
             <body>
               <div class="email-container">
                 <div class="email-header">Cảm Ơn Bạn Đã Chọn Sản Phẩm Của Chúng Tôi</div>';
-            
                 foreach ($order as $order_item) {
                   $product_title = $order_item["product_title"];
                   $detail_quantity = $order_item["detail_quantity"];
@@ -130,7 +129,6 @@
               </div>
             </body>
             </html>';
-            
             $mail->Body = $body;
             
             $mail->Body = $body;
